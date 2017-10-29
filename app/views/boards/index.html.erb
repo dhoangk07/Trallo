@@ -1,8 +1,7 @@
-<p><%= link_to 'Board', boards_path %>
 <%= link_to 'New board', new_board_path  %></p>
 
 <% @boards.each do |board| %>
 
-    	<h3><%= link_to board.name, board_path(board) %></h3>
+  <h3><%= link_to board.name, board_path(board) %></h3>
     	
-  <% end %>
+<% end %>

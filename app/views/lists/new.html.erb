@@ -1,0 +1,10 @@
+<h1>Create new list</h1>
+
+  <%= form_for [@board, @list] do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <%= f.hidden_field :board_id, value: @board.id %>
+
+  <%= f.submit %>
+
+<% end %>

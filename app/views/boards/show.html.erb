@@ -1,4 +1,14 @@
-<p><%= @board.name %></p>
+<h1>Board: <%= @board.name %></h1>
+<p><%= link_to 'New list', new_board_list_path(@board)  %></p>
+
+<ul>
+	<% @board.lists.each do |list| %>
+	  <li><%= list.name %></li>
+	<% end %>
+</ul>
+
+<p>
 
  <%= link_to 'Edit', edit_board_path(@board) %>
   <%= link_to 'Destroy', board_path(@board), 'data-confirm' => 'Are you sure?' ,method: :delete %>
+</p>
