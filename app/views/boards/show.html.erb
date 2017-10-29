@@ -1,0 +1,4 @@
+<p><%= @board.name %></p>
+
+ <%= link_to 'Edit', edit_board_path(@board) %>
+  <%= link_to 'Destroy', board_path(@board), 'data-confirm' => 'Are you sure?' ,method: :delete %>
