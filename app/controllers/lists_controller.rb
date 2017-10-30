@@ -13,6 +13,7 @@ class ListsController < ApplicationController
   def new
     @board = Board.find(params[:board_id])
     @list = @board.lists.new
+    @card = @list.cards.new
   end
 
   def create

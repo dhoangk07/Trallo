@@ -1,0 +1,10 @@
+<h1>Create new card</h1>
+
+  <%= form_for [@list, @card] do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <%= f.hidden_field :list_id, value: @list.id %>
+
+  <%= f.submit %>
+
+<% end %>

@@ -1,0 +1,7 @@
+<p><%= link_to 'New card', new_card_path  %></p>
+
+<% @cards.each do |card| %>
+
+    	<h3><%= link_to card.name, card_path(card) %></h3>
+    	
+  <% end %>
