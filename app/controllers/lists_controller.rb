@@ -6,6 +6,7 @@ class ListsController < ApplicationController
   # action
   def show
     @list = List.find(params[:id])
+    @comment = @list.comments.new
    
   end
  
@@ -24,7 +25,6 @@ class ListsController < ApplicationController
     else
       render :new
     end
- 
   end
 
   def edit
@@ -52,3 +52,4 @@ private
     params.require(:list).permit(:name, :board_id)
   end
 end
+

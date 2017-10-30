@@ -1,4 +1,25 @@
 <p><%= @list.name %></p>
+<p><%= link_to 'New Card', new_list_card_path(@list)  %></p>
+
 
  <%= link_to 'Edit', edit_list_path(@list) %>
  <%= link_to 'Destroy', list_path(@list), 'data-confirm' => 'Are you sure?' ,method: :delete %>
+
+ <p>Comment here</p>
+  <%= form_for @comment do |f| %>
+  <%= f.hidden_field :list_id %>
+  <%= f.hidden_field :user_id, :value => current_user.id %>
+  <%= f.text_area :content %>
+  <%= f.submit 'Comment here' %>
+<% end %>
+
+<h3>Comments</h3>
+<% @list.comments.each do |comment| %>
+  <p>
+  	<%= comment.content %>
+  	<% if comment.persisted? %>
+	  	<%= link_to 'Destroy', comment_path(comment), method: :delete %>
+	   <% end %>
+    <%= comment.list.name %>
+  </p>
+<% end %>

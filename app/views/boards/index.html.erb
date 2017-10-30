@@ -1,5 +1,6 @@
 <%= link_to 'New board', new_board_path  %></p>
 
+<h2>Lists of the board </h2>
 <% @boards.each do |board| %>
 
   <h3><%= link_to board.name, board_path(board) %></h3>
