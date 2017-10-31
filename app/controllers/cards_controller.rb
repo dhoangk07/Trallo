@@ -18,9 +18,9 @@ class CardsController < ApplicationController
   def create
     # params
     @card = Card.new(card_params)
+    @list = @card.list
     if @card.save
-      list = @card.list
-      redirect_to board_list_path(list.board, list)
+      redirect_to board_list_path(@list.board, @list)
     else
       render :new
     end
@@ -49,6 +49,6 @@ class CardsController < ApplicationController
 private
 
   def card_params
-    params.require(:card).permit(:name, :list_id)
+    params.require(:card).permit(:name, :list_id, :file )
   end
 end

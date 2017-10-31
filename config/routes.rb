@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   		
   end
 
-  resources :lists do
+  resources :lists, only: [] do
   		resources :cards
   	end
 

@@ -1,4 +1,7 @@
 <p><%= @card.name %></p>
 
- <%= link_to 'Edit', edit_card_path(@card) %>
- <%= link_to 'Destroy', card_path(@card), 'data-confirm' => 'Are you sure?' ,method: :delete %>
+ <%= link_to 'Edit', edit_list_card_path(@card.list_id, @card) %>
+ <%= link_to 'Destroy', list_card_path(@card.list_id, @card), 'data-confirm' => 'Are you sure?' ,method: :delete %>
+ <% if @card.file.present? %>
+	 <%= link_to @card.file.original_filename, @card.file.url %>
+<% end %>

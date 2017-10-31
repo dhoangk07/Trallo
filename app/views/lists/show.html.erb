@@ -2,8 +2,8 @@
 <p><%= link_to 'New Card', new_list_card_path(@list)  %></p>
 
 
- <%= link_to 'Edit', edit_list_path(@list) %>
- <%= link_to 'Destroy', list_path(@list), 'data-confirm' => 'Are you sure?' ,method: :delete %>
+ <%= link_to 'Edit', edit_board_list_path(@list.board_id, @list) %>
+ <%= link_to 'Destroy', board_list_path(@list.board_id, @list), 'data-confirm' => 'Are you sure?' ,method: :delete %>
 
  <p>Comment here</p>
   <%= form_for @comment do |f| %>
@@ -23,3 +23,10 @@
     <%= comment.list.name %>
   </p>
 <% end %>
+
+<h2> List of cards</h2>
+<ul>
+  <% @list.cards.each do |card| %>
+    <li><%= link_to card.name, list_card_path(@list, card) %></li>
+  <% end %>
+</ul>
