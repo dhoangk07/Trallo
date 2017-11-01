@@ -20,10 +20,15 @@ class CardsController < ApplicationController
     @card = Card.new(card_params)
     @list = @card.list
     if @card.save
-      redirect_to board_list_path(@list.board, @list)
+      respond_to do |format|
+        format.html { redirect_to list_path(@card.list) }
+        format.js
+      end
+      #redirect_to board_list_path(@list.board, @list)
     else
       render :new
     end
+
  
   end
 
@@ -44,7 +49,12 @@ class CardsController < ApplicationController
   def destroy
     @card = Card.find(params[:id])
     @card.destroy
-    redirect_to list_cards_path
+
+    respond_to do |format|
+      format.html { redirect_to list_path(@card.list_id) }
+      format.js
+    end
+    #redirect_to list_cards_path
   end
 
 private
