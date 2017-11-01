@@ -29,12 +29,13 @@ class ListsController < ApplicationController
 
   def edit
     @list = List.find(params[:id])
+    @board = @list.board
   end
 
   def update
     @list = List.find(params[:id])
     if @list.update_attributes(list_params)
-      redirect_to list_path(@list)
+      redirect_to board_list_path(@list)
     else
       render :edit
     end

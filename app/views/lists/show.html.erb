@@ -20,7 +20,6 @@
   	<% if comment.persisted? %>
 	  	<%= link_to 'Destroy', comment_path(comment), method: :delete %>
 	   <% end %>
-    <%= comment.list.name %>
   </p>
 <% end %>
 

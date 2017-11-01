@@ -28,22 +28,23 @@ class CardsController < ApplicationController
   end
 
   def edit
-    @card = card.find(params[:id])
+    @card = Card.find(params[:id])
+    @list = @card.list
   end
 
   def update
-    @card = card.find(params[:id])
+    @card = Card.find(params[:id])
     if @card.update_attributes(card_params)
-      redirect_to card_path(@card)
+      redirect_to list_card_path(@card)
     else
       render :edit
     end
   end
 
   def destroy
-    @card = card.find(params[:id])
+    @card = Card.find(params[:id])
     @card.destroy
-    redirect_to cards_path
+    redirect_to list_cards_path
   end
 
 private

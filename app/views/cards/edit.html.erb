@@ -1,7 +1,6 @@
 <h1> Edit card</h1>
 
-<%= form_for @card do |f| %>
-<%= form_for @card, url: card_path(@book), html: { multipart: true } do |f| %>
+<%= form_for [@list, @card], html: { multipart: true } do |f| %>
   <p>
     <%= f.label :name %>
     <%= f.text_field :name %>
@@ -12,9 +11,6 @@
    <%= f.file_field :file %>
 
   </p> 
-
-  <%= image_tag @card.photo.url(:medium) %>
-
 
   <%= f.submit %>
 
