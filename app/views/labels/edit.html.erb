@@ -1,0 +1,11 @@
+<h1> Edit label</h1>
+
+<%= form_for @label do |f| %>
+   <p>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </p>
+
+  <%= f.submit %>
+
+<% end %>

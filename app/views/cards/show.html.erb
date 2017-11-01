@@ -5,3 +5,8 @@
  <% if @card.file.present? %>
 	 <%= link_to @card.file.original_filename, @card.file.url %>
 <% end %>
+
+<h3>List of labels</h3>
+<% @card.labels.each do |label|%>
+  <%= label.name %>
+<% end %>

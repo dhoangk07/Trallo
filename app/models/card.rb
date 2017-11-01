@@ -7,5 +7,8 @@ class Card < ApplicationRecord
              "application/vnd.openxmlformats-officedocument.wordprocessingml.document", 
              "text/plain"]
 
+    has_many :cards_labels
+	has_many :labels, through: :cards_labels
+
 end
 

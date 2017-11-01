@@ -1,0 +1,11 @@
+
+<h2>label List</h2>
+
+<%= link_to 'New labels', new_label_path  %>
+
+<% @labels.each do |label| %>
+
+    	<h3><%= link_to label.name, label_path(label) %></h3>
+    	<p><%= label.address %></p>
+    	
+  <% end %>
