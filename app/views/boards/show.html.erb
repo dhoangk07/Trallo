@@ -6,8 +6,19 @@
 
 
 <h2 id='labels-list' class='labels'> List of lists</h2>
-<ul>
+<ul id='lists'>
 	<% @board.lists.each do |list| %>
-	  <li><%= link_to list.name, board_list_path(@board, list) %></li>
+	  <li id="list-<%= list.id %>"><%= link_to list.name, board_list_path(@board, list)  %>
+	  	<%= link_to 'Destroy', board_list_path(@board, list), method: :delete, remote: true %>
+	  </li>
 	<% end %>
 </ul>
+
+<p>Create new list</p>
+<% new_list = @board.lists.new %>
+<%= form_for [@board, new_list], remote: true do |f| %>
+  <%= f.hidden_field :board_id, value: @board.id %>
+  <%= f.text_field :name %>
+  <%= f.submit %>
+<% end %>
+

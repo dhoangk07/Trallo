@@ -21,7 +21,11 @@ class ListsController < ApplicationController
     # params
     @list = List.new(list_params)
     if @list.save
-      redirect_to board_path(@list.board)
+      respond_to do |format|
+        format.html { redirect_to board_path(@list.board) }
+        format.js
+      end
+      
     else
       render :new
     end
@@ -44,7 +48,12 @@ class ListsController < ApplicationController
   def destroy
     @list = List.find(params[:id])
     @list.destroy
-    redirect_to board_path(@list.board_id)
+
+    respond_to do |format|
+      format.html { redirect_to board_path(@list.board_id) }
+      format.js
+    end
+    
   end
 
 private
