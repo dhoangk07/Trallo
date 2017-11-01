@@ -1,16 +1,16 @@
 class CommentsController < ApplicationController
   def create
   	# params
-  	@comment = Comment.new(comment_params)
+    @comment = Comment.new(comment_params)
   	if @comment.save
-  		redirect_to list_path(@comment.list)
+  		redirect_to board_list_path(@comment.list.board, @comment.list)
   	end
   end
 
   def destroy
     @comment = Comment.find(params[:id])
     @comment.destroy
-    redirect_to list_path(@list.book)
+    redirect_to board_list_path(@comment.list.board, @comment.list)
   end
 
   private
