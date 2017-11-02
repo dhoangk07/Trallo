@@ -10,6 +10,20 @@
 	<% @board.lists.each do |list| %>
 	  <li id="list-<%= list.id %>"><%= link_to list.name, board_list_path(@board, list)  %>
 	  	<%= link_to 'Destroy', board_list_path(@board, list), method: :delete, remote: true %>
+	  	<ul class="cards"> 
+	  		<% list.cards.each do |card| %> 
+	  		  <li><%= card.name %></li>
+	  		<% end %>
+	  		<li>
+	  			<p>Create new card</p>
+				<% new_card = list.cards.new %>
+				<%= form_for [list, new_card], remote: true do |f| %>
+				  <%= f.hidden_field :list_id, value: list.id %>
+				  <%= f.text_field :name %>
+				  <%= f.submit %>
+				<% end %>
+	  		</li>
+	  	</ul>
 	  </li>
 	<% end %>
 </ul>
