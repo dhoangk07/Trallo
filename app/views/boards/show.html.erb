@@ -1,18 +1,18 @@
 <h1>Board: <%= @board.name %></h1>
 <p><%= link_to 'New list', new_board_list_path(@board)  %>
- <%= link_to 'Edit', edit_board_path(@board) %>
-  <%= link_to 'Destroy', board_path(@board), 'data-confirm' => 'Are you sure?' ,method: :delete %>
+ 	<%= link_to 'Edit', edit_board_path(@board) %>
+ 	<%= link_to 'Destroy', board_path(@board), 'data-confirm' => 'Are you sure?' ,method: :delete %>
 </p>
 
 
 <h2 id='labels-list' class='labels'> List of lists</h2>
-<ul id='lists'>
+<ul id='list'>
 	<% @board.lists.each do |list| %>
-	  <li id="list-<%= list.id %>"><%= link_to list.name, board_list_path(@board, list)  %>
+		<li id="new-list-<%= list.id %>"><%= link_to list.name, board_list_path(@board, list)  %>
 	  	<%= link_to 'Destroy', board_list_path(@board, list), method: :delete, remote: true %>
 	  	<ul class="cards"> 
 	  		<% list.cards.each do |card| %> 
-	  		  <li><%= card.name %></li>
+	  		  <li id="new-list-<%= list.id %>"><%= card.name %></li>
 	  		<% end %>
 	  		<li>
 	  			<p>Create new card</p>

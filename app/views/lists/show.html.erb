@@ -30,7 +30,7 @@
   <!-- <% end %> -->
 <!-- </ul> -->
 
-<h2 id='labels-card' class='labels'> List of cards</h2>
+<h2 id='labels-card' class='labels'> List of cards</h2> -->
 <ul id='cards'>
   <% @list.cards.each do |card| %>
     <li id="card-<%= card.id %>"><%= link_to card.name, list_card_path(@list, card)  %>

@@ -1,2 +1,2 @@
-$('#lists').append("<li><%= j(link_to @list.name, board_list_path(@list.board, @list)) %> <%= j(link_to 'Destroy', board_list_path(@list.board, @list), method: :delete, remote: true)%></li>");
+$('#list-<%= @list.board.id %> ul').prepend("<li><%= j(link_to @list.name, board_list_path(@list.board, @list)) %> <%= j(link_to 'Destroy', board_list_path(@list.board, @list), method: :delete, remote: true)%></li>");
 $('#list_name').val('');

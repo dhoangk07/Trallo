@@ -1,0 +1,2 @@
+$('#list-<%= @card.list.id %> ul').append("<li><%= j(link_to @card.name, list_card_path(@card.list, @card)) %> <%= j(link_to 'Destroy', list_card_path(@card.list, @card), method: :delete, remote: true)%></li>");
+$('#card_name').val('');
