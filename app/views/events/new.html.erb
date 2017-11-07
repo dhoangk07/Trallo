@@ -1,0 +1,20 @@
+<h1>Create new event</h1>
+
+  <%= form_for [@board, @event] do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <%= f.hidden_field :board_id, value: @board.id %>
+
+  <%= form_for [@board, @event] do |f| %>
+  <%= f.label :date %>
+  <%= f.text_field :date %>
+  <%= f.hidden_field :board_id, value: @board.id %>
+
+  <%= form_for [@board, @event] do |f| %>
+  <%= f.label :reminder_date %>
+  <%= f.text_field :reminder_date %>
+  <%= f.hidden_field :board_id, value: @board.id %>
+
+  <%= f.submit %>
+
+<% end %>

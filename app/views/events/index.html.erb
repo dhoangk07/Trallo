@@ -1,0 +1,9 @@
+<p><%= link_to 'New event', new_event_path  %></p>
+
+<% @events.each do |event| %>
+
+    	<h3><%= link_to event.name, event_path(event) %></h3>
+    	<h3><%= link_to event.date, event_path(event) %></h3>
+    	<h3><%= link_to event.reminder_date, event_path(event) %></h3>
+    	
+  <% end %>

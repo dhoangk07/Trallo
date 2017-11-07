@@ -36,3 +36,11 @@
   <%= f.submit %>
 <% end %>
 
+<p>Create new event</p>
+<% new_event = @board.events.new %>
+<%= form_for [@board, new_event], remote: true do |f| %>
+  <%= f.hidden_field :board_id, value: @board.id %>
+  <%= f.text_field :title %>
+  <%= f.submit %>
+<% end %>
+
