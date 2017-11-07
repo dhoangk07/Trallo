@@ -12,7 +12,7 @@
 	  	<%= link_to 'Destroy', board_list_path(@board, list), method: :delete, remote: true %>
 	  	<ul class="cards"> 
 	  		<% list.cards.each do |card| %> 
-	  		  <li id="new-list-<%= list.id %>"><%= card.name %></li>
+	  		  <li id="new-list-<%= list.id %>"><%= link_to card.name, list_card_path(list, card) %></li>
 	  		<% end %>
 	  		<li>
 	  			<p>Create new card</p>
