@@ -8,11 +8,11 @@
 <h2 id='labels-list' class='labels'> List of lists</h2>
 <ul id='list'>
 	<% @board.lists.each do |list| %>
-		<li id="new-list-<%= list.id %>"><%= link_to list.name, board_list_path(@board, list)  %>
+		<li id="new-list-<%= list.id %>" class='list-column'><%= link_to list.name, board_list_path(@board, list)  %>
 	  	<%= link_to 'Destroy', board_list_path(@board, list), method: :delete, remote: true %>
 	  	<ul class="cards"> 
 	  		<% list.cards.each do |card| %> 
-	  		  <li id="new-list-<%= list.id %>"><%= link_to card.name, list_card_path(list, card) %></li>
+	  		  <li id="new-list-<%= list.id %>" class="card-in-list"><%= link_to card.name, list_card_path(list, card) %></li>
 	  		<% end %>
 	  		<li>
 	  			<p>Create new card</p>

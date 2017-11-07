@@ -1,0 +1,24 @@
+.list-column {
+  width: 210px;
+  float: left;
+  border: 2px solid red;
+  background: aliceblue;
+  margin-right: 4px;
+}
+
+.card-in-list {
+	width: 200px;
+	border: 1px solid blue;
+	background: white;
+}
+
+ul.cards {
+	list-style: none;
+    padding-left: 4px;
+    padding-right: 4px;
+}
+
+#list {
+	list-style: none;
+    padding-left: 0;
+}
