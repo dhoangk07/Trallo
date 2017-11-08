@@ -4,11 +4,10 @@ class EventsController < ApplicationController
   end
 
   # action
-  def show
-    @event = Event.find(params[:id])
-    @comment = @event.comments.new
+  #def show
+  #  @event = Event.find(params[:id])
    
-  end
+  #end
  
   # action
   def new
@@ -59,7 +58,7 @@ class EventsController < ApplicationController
 private
 
   def event_params
-    params.require(:event).permit(:name, :date, :reminder_date, :board_id)
+    params.require(:event).permit(:title, :date, :reminder_date, :board_id)
   end
 end
 

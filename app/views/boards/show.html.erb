@@ -44,3 +44,17 @@
   <%= f.submit %>
 <% end %>
 
+<ul id='event'>
+	<% @board.events.each do |event| %>
+	  		<li id="new-event-<%= event.id %>"><%= link_to event.title, board_event_path(@board, event)  %>
+	  		<%= link_to 'Destroy', board_event_path(@board, event), method: :delete, remote: true %>
+	  		<% end %>
+	  		</li>
+	<p>Create new event</p>
+	<% new_event = @board.events.new %>
+	<%= form_for [@board, new_event], remote: true do |f| %>
+	  <%= f.hidden_field :board_id, value: @board.id %>
+	  <%= f.text_field :title %>
+	  <%= f.submit %>
+	<% end %>
+</ul>
