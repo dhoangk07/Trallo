@@ -14,26 +14,26 @@
 			<div class='list-title'><%= list.name %></div>
 	  	<ul class="cards"> 
 	  		<% list.cards.each do |card| %> 
-
-	  		  <div id="modal-<%= card.id %>" class="modal">
-				  <p><%= card.name %></p>
-				</div>
-
-              <p><a href="#modal-<%= card.id %>" rel="modal:open"><%= card.name %></a></p>
-
+	  		  <%= render 'card_modal', card: card %>
 	  		<% end %>
-	  		</li>
+	  		</li> 
 
-	  		<li>
-	  			<p>Create new card</p>
-				<% new_card = list.cards.new %>
-				<%= form_for [list, new_card], remote: true do |f| %>
-				  <%= f.hidden_field :list_id, value: list.id %>
-				  <%= f.text_field :name %>
-				  <%= f.submit %>
-				<% end %>
-	  		</li>
+
 	  	</ul>
+
+	  	<div>
+  			<p>Create new card</p>
+			<% new_card = list.cards.new %> 
+			<%= form_for [list, new_card],  remote: true do |f| %>
+			<%= f.hidden_field :list_id, value: list.id %>
+			<p><%= f.label :name %></p>
+			<%= f.text_field :name %>
+			<p><%= f.label :description %></p>
+			<%= f.text_field :description %>
+			<%= f.submit %>
+			<% end %>
+			
+	    </div>
 	  </li>
 	<% end %>
 </ul>
