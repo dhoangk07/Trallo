@@ -1,0 +1,21 @@
+<h1> Edit event</h1>
+
+<%= form_for [@board, @event] do |f| %>
+  <p>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </p>
+
+ <p>
+    <%= f.label :date %>
+    <%= f.text_field :date %>
+  </p>
+ 
+ <p>
+    <%= f.label :reminder_date %>
+    <%= f.text_field :reminder_date %>
+  </p>
+
+  <%= f.submit %>
+
+<% end %>

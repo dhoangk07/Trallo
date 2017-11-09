@@ -1,3 +1,3 @@
-$('#new-list-<%= @list.id %> ul').append("<li id='def-list-<%= @card.id %>'><%= j(link_to @card.name, list_card_path(@card.list, @card)) %> <%= j(link_to 'Destroy', list_card_path(@card.list, @card), method: :delete, remote: true)%></li>");
+$('#new-list-<%= @list.id %> ul').prepend("<li id='new-card-<%= @card.id %>'><%= j(link_to @card.name, list_card_path(@card.list, @card)) %> <%= j(link_to 'Destroy', list_card_path(@card.list, @card), method: :delete, remote: true)%></li>");
 $('#new-list-<%= @list.id %> #card_name').val('');
 

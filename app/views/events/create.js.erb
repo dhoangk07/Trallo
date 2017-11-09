@@ -1,0 +1,2 @@
+$('#top-event').prepend("<li><%= j(link_to @event.title, board_event_path(@event.board, @event)) %> <%= j(link_to 'Destroy', board_event_path(@event.board, @event), method: :delete, remote: true)%></li>");
+$('#event_title').val('');
