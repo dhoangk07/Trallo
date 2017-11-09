@@ -14,11 +14,18 @@
 
 ul.cards {
 	list-style: none;
-    padding-left: 4px;
-    padding-right: 4px;
+    padding: 4px;
+    padding-top: 10px;
 }
 
 #list {
 	list-style: none;
     padding-left: 0;
+    display: inline-flex;
+}
+
+.list-title {
+  font-weight: 800;
+  color: black;
+	
 }

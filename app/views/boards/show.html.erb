@@ -5,18 +5,21 @@
 </p>
 
 
+
+
 <h2 id='labels-list' class='labels'> List of lists</h2>
 <ul id='list'>
 	<% @board.lists.each do |list| %>
-		<li id="new-list-<%= list.id %>" class='list-column'><%= link_to list.name, board_list_path(@board, list)  %>
-	  	<%= link_to 'Destroy', board_list_path(@board, list), method: :delete, remote: true %>
+		<li id="new-list-<%= list.id %>" class='list-column'>
+			<div class='list-title'><%= list.name %></div>
 	  	<ul class="cards"> 
 	  		<% list.cards.each do |card| %> 
 
-	  		  <li id="new-list-<%= list.id %>" class="card-in-list"><%= link_to card.name, list_card_path(list, card) %></li>
+	  		  <div id="modal-<%= card.id %>" class="modal">
+				  <p><%= card.name %></p>
+				</div>
 
-	  		  <li id="new-card-<%= card.id %>"><%= link_to card.name, list_card_path(list, card)%>
-	  		  <%= link_to 'Destroy', list_card_path(list, card), method: :delete, remote: true %>
+              <p><a href="#modal-<%= card.id %>" rel="modal:open"><%= card.name %></a></p>
 
 	  		<% end %>
 	  		</li>
@@ -35,6 +38,8 @@
 	<% end %>
 </ul>
 
+<div>
+
 <p>Create new list</p>
 <% new_list = @board.lists.new %>
 <%= form_for [@board, new_list], remote: true do |f| %>
@@ -42,6 +47,7 @@
   <%= f.text_field :name %>
   <%= f.submit %>
 <% end %>
+</div>
 
 
 <ul id='event'>
