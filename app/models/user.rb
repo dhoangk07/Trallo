@@ -7,6 +7,14 @@ class User < ApplicationRecord
   has_many :boards
   has_many :comments
   def name 
-  	last_name
+  		result = ""
+  	if last_name.present?
+  		result = result + last_name
+  	end
+  	
+  	if first_name.present?
+  		result = result + first_name
+  	end
+  	result
   end
 end
