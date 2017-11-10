@@ -9,6 +9,7 @@ class Card < ApplicationRecord
 
     has_many :cards_labels
 	has_many :labels, through: :cards_labels
+	has_many :comments
 
 end
 
