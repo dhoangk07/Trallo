@@ -4,6 +4,7 @@
 	<% @board.lists.each do |list| %>
 		<li id="new-list-<%= list.id %>" class='list-column'>
 			<div class='list-title'><%= list.name %></div>
+			<div id="" style="overflow-y: scroll; height:400px;"> 
 	  	<ul class="cards"> 
 	  		<% list.cards.each do |card| %> 
 	  		  <%= render 'card_modal', card: card %>
