@@ -6,4 +6,7 @@ class User < ApplicationRecord
 
   has_many :boards
   has_many :comments
+  def name 
+  	last_name
+  end
 end
