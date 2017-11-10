@@ -2,8 +2,12 @@ class CommentsController < ApplicationController
   def create
   	# params
     @comment = Comment.new(comment_params)
+    @card = Card.find(params[:card_id])
   	if @comment.save
-  		redirect_to board_list_path(@comment.list.board, @comment.list)
+      respond_to do |format|
+        format.html { redirect_to board_list_path(@comment.list.board, @comment.list) }
+        format.js
+      end
   	end
   end
 
@@ -16,6 +20,6 @@ class CommentsController < ApplicationController
   private
 
   def comment_params
-    params.require(:comment).permit(:content, :list_id, )
+    params.require(:comment).permit(:content, :user_id, :card_id)
   end
 end

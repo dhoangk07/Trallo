@@ -2,7 +2,25 @@
 	<div id="modal-<%= card.id %>" class="modal">
 		<h3><%= card.name %></h3>
 	    <p><%= card.description %></p>
+
+        <h3>Comments</h3>
+	    <ul class='comments'>
+	    	<% card.comments.each do |comment| %>
+	    	  <p><%= comment.content %></p>
+	    	<% end %>
+	    	
+	    </ul>
+	    <div>
+	    	<% comment = card.comments.new %>
+	    	<%= form_for [card, comment], remote: true do |f|%>
+	    	  <%= f.hidden_field :user_id, value: current_user.id %>
+	    	  <%= f.hidden_field :card_id, value: card.id %>
+	    	  <%= f.text_field :content %>
+	    	  <%= f.submit %>
+	    	<% end %>
+	    </div>
 	</div>
 
+	
 	<a href="#modal-<%= card.id %>" rel="modal:open" class='card-name'><%= card.name %></a>
 </div>
