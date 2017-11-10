@@ -1,4 +1,2 @@
-$('#modal-<%= @card.id %> .comments').append('<li><%= @comment.content %></li>');
-$('#modal-<%= @card.id %> .comments').append('<li><%= @comment.user.name %></li>');
-$('#modal-<%= @card.id %> .comments').append('<li><%= @comment.created_at %></li>');
+$('#modal-<%= @card.id %> .comments').append("<%= j(render 'boards/comment_modal', comment: @comment) %>");
 $('#modal-<%= @card.id %> #comment_content').val('');
