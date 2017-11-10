@@ -1,13 +1,5 @@
-<h1>Board: <%= @board.name %></h1>
-<p><%= link_to 'New list', new_board_list_path(@board)  %>
- 	<%= link_to 'Edit', edit_board_path(@board) %>
- 	<%= link_to 'Destroy', board_path(@board), 'data-confirm' => 'Are you sure?' ,method: :delete %>
-</p>
+<h1><%= @board.name %></h1>
 
-
-
-
-<h2 id='labels-list' class='labels'> List of lists</h2>
 <ul id='list'>
 	<% @board.lists.each do |list| %>
 		<li id="new-list-<%= list.id %>" class='list-column'>
@@ -26,10 +18,8 @@
 			<% new_card = list.cards.new %> 
 			<%= form_for [list, new_card],  remote: true do |f| %>
 			<%= f.hidden_field :list_id, value: list.id %>
-			<p><%= f.label :name %></p>
-			<%= f.text_field :name %>
-			<p><%= f.label :description %></p>
-			<%= f.text_field :description %>
+			<%= f.text_field :name, placeholder: :name %>
+			<%= f.text_field :description, placeholder: :description %>
 			<%= f.submit %>
 			<% end %>
 			

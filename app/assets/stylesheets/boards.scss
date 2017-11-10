@@ -1,15 +1,18 @@
 .list-column {
   width: 210px;
-  float: left;
-  border: 2px solid red;
+  border: 2px solid #aed2f2;
   background: aliceblue;
-  margin-right: 4px;
+  border-radius: 4px;
+  margin-right: 16px;
+  padding: 4px;
+  display: inline-table;
 }
 
 .card-in-list {
-	width: 200px;
-	border: 1px solid blue;
-	background: white;
+	background-color: white;
+    border-radius: 4px;
+    padding: 6px;
+    margin-bottom: 8px;
 }
 
 ul.cards {
@@ -28,4 +31,16 @@ ul.cards {
   font-weight: 800;
   color: black;
 	
+}
+
+.card-name {
+    text-decoration: none;
+    color: black;
+}
+
+
+form input[type='text'] {
+	width: 94%;
+    padding: 4px;
+    margin-bottom: 4px
 }
