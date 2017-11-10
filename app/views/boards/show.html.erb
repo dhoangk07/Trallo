@@ -5,8 +5,10 @@
 		<li id="new-list-<%= list.id %>" class='list-column'>
 			<div class='list-title'><%= list.name %></div>
 			<div id="" style="overflow-y: scroll; height:400px;"> 
+
 	  	<ul class="cards"> 
 	  		<% list.cards.each do |card| %> 
+
 	  		  <%= render 'card_modal', card: card %>
 	  		<% end %>
 	  		</li> 
@@ -21,7 +23,7 @@
 			<%= f.hidden_field :list_id, value: list.id %>
 			<%= f.text_field :name, placeholder: :name %>
 			<%= f.text_field :description, placeholder: :description %>
-			<%= f.submit %>
+			<%= f.submit "Add a card ..."%>
 			<% end %>
 			
 	    </div>
@@ -36,7 +38,7 @@
 <%= form_for [@board, new_list], remote: true do |f| %>
   <%= f.hidden_field :board_id, value: @board.id %>
   <%= f.text_field :name %>
-  <%= f.submit %>
+  <%= f.submit "Add a list ..."%>
 <% end %>
 </div>
 

@@ -6,9 +6,11 @@
         <h3>Comments</h3>
 	    <ul class='comments'>
 	    	<% card.comments.each do |comment| %>
-	    	  <p><%= comment.content %></p>
-	    	  <p><%= comment.user.name %></p>
-	    	  <p><%= comment.created_at %></p>
+	    	  <div>
+		    	  <b>Name :<%= comment.user.name %></b>
+		    	  <div class='card-content'>Comment :<%= comment.content %></div>
+		    	  <small>Answered :<%= time_ago_in_words(comment.created_at) %></small>
+		      </div>
 	    	<% end %>
 	    	
 	    </ul>
@@ -17,9 +19,7 @@
 	    	<%= form_for [card, comment], remote: true do |f|%>
 	    	  <%= f.hidden_field :user_id, value: current_user.id %>
 	    	  <%= f.hidden_field :card_id, value: card.id %>
-	    	  <%= f.text_field :content %>
-	    	  
-	    	  <%= f.submit %>
+	    	  <%= f.text_field :content, placeholder: "Comment..." %>
 	    	<% end %>
 	    </div>
 	</div>
