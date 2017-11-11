@@ -6,6 +6,7 @@ class ListsController < ApplicationController
   # action
   def show
     @list = List.find(params[:id])
+    @comment = @list.comments.new
   end
  
   # action

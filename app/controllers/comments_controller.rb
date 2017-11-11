@@ -14,7 +14,10 @@ class CommentsController < ApplicationController
   def destroy
     @comment = Comment.find(params[:id])
     @comment.destroy
-    redirect_to board_list_path(@comment.list.board, @comment.list)
+    respond_to do |format|
+      format.html { redirect_to card_path(@comment.card_id) }
+      format.js
+    end
   end
 
   private
