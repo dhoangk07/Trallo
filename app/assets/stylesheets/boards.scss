@@ -3,7 +3,7 @@
   border: 2px solid #aed2f2;
   background: aliceblue;
   border-radius: 4px;
-  margin-right: 16px;
+  margin-right: 28px;
   padding: 4px;
   display: inline-table;
   overflow-y: scroll;
@@ -66,5 +66,9 @@ ul.comments {
   padding-left: 4px;
   height: 400px;
   overflow-y: auto;
+}
+
+.list-trash {
+  float: right;
 }
 
