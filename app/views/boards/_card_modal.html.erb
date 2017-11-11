@@ -1,14 +1,16 @@
 <div id="card-<%= card.id %>" class='card-in-list'> 
 	<div id="modal-<%= card.id %>" class="modal">
-		<h3><%= card.name %></h3>
+		<h3>
+			<%= card.name %>
 
-		<%= link_to list_card_path(card.list, card), method: :delete, remote: true do %>
+		<%= link_to list_card_path(card.list, card), class: 'card-trash', method: :delete, remote: true do %>
 			<%= fa_icon "trash" %>
+		
 		<% end %>
 
+		</h3>
 	    <p><%= card.description %></p>
 
-        <h3>Comments</h3>
 	    <ul class='comments'>
 	    	<% card.comments.each do |comment| %>
 	    	  <%= render 'comment_modal', comment: comment %>
