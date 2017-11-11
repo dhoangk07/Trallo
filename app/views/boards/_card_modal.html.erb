@@ -1,6 +1,11 @@
 <div id="card-<%= card.id %>" class='card-in-list'> 
 	<div id="modal-<%= card.id %>" class="modal">
 		<h3><%= card.name %></h3>
+
+		<%= link_to list_card_path(card.list, card), method: :delete, remote: true do %>
+			<%= fa_icon "trash" %>
+		<% end %>
+
 	    <p><%= card.description %></p>
 
         <h3>Comments</h3>
