@@ -3,22 +3,20 @@
 <ul id='list'>
 	<% @board.lists.each do |list| %>
 		
-  <%= render('list_modal', { list: list }) %>
-
+	  <%= render('list_modal', board: @board, list: list) %>
+  
 	<% end %>
-</ul>
+
 
 <div>
 
-<p>Create new list</p>
 <% new_list = @board.lists.new %>
 <%= form_for [@board, new_list], remote: true do |f| %>
   <%= f.hidden_field :board_id, value: @board.id %>
-  <%= f.text_field :name %>
-  <%= f.submit "Add a list ..."%>
+  <%= f.text_field :name, placeholder: "Add a list..." %>
 <% end %>
 </div>
-
+</ul>
 
 <ul id='event'>
 	<% @board.events.each do |event| %>
@@ -33,4 +31,7 @@
 	  <%= f.text_field :title %>
 	  <%= f.submit %>
 	<% end %>
+
 </ul>
+
+
