@@ -1,16 +1,21 @@
 <li id="new-list-<%= list.id %>" class='list-column'>
-		<div class='list-title'><%= list.name %></div>
-		<div id="" style="overflow-y: scroll; height:400px;"> 
+		<div class='list-title'>
+			<%= list.name %>
+			<%= link_to board_list_path(board, list), method: :delete, remote: true do %>
+				<%= fa_icon "trash" %>
+			<% end %>
+		</div>
 
-	  	<ul class="cards"> 
-	  		<% list.cards.each do |card| %> 
+		<div id="" style="overflow-y: scroll; height:200px;"> 
 
-	  		  <%= render 'card_modal', card: card %>
-	  		<% end %>
-</li> 
+		  	<ul class="cards"> 
+		  		<% list.cards.each do |card| %> 
 
+		  		  <%= render 'card_modal', card: card %>
 
-	  	</ul>
+		  		<% end %>
+		  	</ul>
+	  	</div>
 
 	  	<div>
   			<p>Create new card</p>
@@ -23,4 +28,7 @@
 			<% end %>
 			
 	    </div>
-</li>
+</li> 
+
+
+	  	
