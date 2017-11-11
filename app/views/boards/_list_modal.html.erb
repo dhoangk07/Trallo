@@ -1,7 +1,7 @@
 <li id="new-list-<%= list.id %>" class='list-column'>
 		<div class='list-title'>
 			<%= list.name %>
-			<%= link_to board_list_path(board, list), method: :delete, remote: true do %>
+			<%= link_to board_list_path(board, list), class: 'list-trash', method: :delete, remote: true do %>
 				<%= fa_icon "trash" %>
 			<% end %>
 		</div>
