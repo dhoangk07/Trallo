@@ -2,32 +2,9 @@
 
 <ul id='list'>
 	<% @board.lists.each do |list| %>
-		<li id="new-list-<%= list.id %>" class='list-column'>
-			<div class='list-title'><%= list.name %></div>
-			<div id="" style="overflow-y: scroll; height:400px;"> 
+		
+  <%= render('list_modal', { list: list }) %>
 
-	  	<ul class="cards"> 
-	  		<% list.cards.each do |card| %> 
-
-	  		  <%= render 'card_modal', card: card %>
-	  		<% end %>
-	  		</li> 
-
-
-	  	</ul>
-
-	  	<div>
-  			<p>Create new card</p>
-			<% new_card = list.cards.new %> 
-			<%= form_for [list, new_card],  remote: true do |f| %>
-			<%= f.hidden_field :list_id, value: list.id %>
-			<%= f.text_field :name, placeholder: :name %>
-			<%= f.text_field :description, placeholder: :description %>
-			<%= f.submit "Add a card ..."%>
-			<% end %>
-			
-	    </div>
-	  </li>
 	<% end %>
 </ul>
 
