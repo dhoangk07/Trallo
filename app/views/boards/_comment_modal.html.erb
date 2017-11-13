@@ -1,7 +1,19 @@
 <div id="comment-<%= comment.id %>" class='comment-in-card'>
-  <b>Name :<%= comment.user.name %></b>
-  <div class='comment-content'>Comment :<%= comment.content %></div>
-  <small>Answered :<%= time_ago_in_words(comment.created_at) %></small>
-  <%= link_to 'Destroy', card_comment_path(comment.card, comment), method: :delete, remote: true %>
+  <b><%= fa_icon "user" %> :<%= comment.user.name %></b>
+  
+  <div class='comment-content1'>
+
+  	<div id='comment-zone-<%= comment.id %>'><%= comment.content %>
+  		
+  	</div>
+  	
+
+  </div>
+
+  <small id='editer-<%=comment.id %>'><%= fa_icon "eye" %> :<%= time_ago_in_words(comment.created_at) %>  - </small>
+  <%= link_to 'Edit', edit_card_comment_path(comment.card, comment) , remote: true %> -
+  <%= link_to 'Destroy', card_comment_path(comment.card, comment),'data-confirm' => 'Are you sure?' ,method: :delete, remote: true %>
 </div>
+
+
 	   

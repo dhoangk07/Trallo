@@ -1,2 +1,2 @@
-$('#modal-<%= @card.id %> .comments').append("<%= j(render 'boards/comment_modal', comment: @comment) %>");
+$('#modal-<%= @card.id %> .comments').prepend("<%= j(render 'boards/comment_modal', comment: @comment) %>");
 $('#modal-<%= @card.id %> #comment_content').val('');

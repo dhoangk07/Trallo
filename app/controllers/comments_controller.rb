@@ -20,6 +20,32 @@ class CommentsController < ApplicationController
     end
   end
 
+  def edit
+    @comment = Comment.find(params[:id])
+
+    respond_to do |format|
+      format.html { redirect_to card_path(@comment.card_id) }
+      format.js
+    end
+  end
+
+  def update
+    @comment = Comment.find(params[:id])
+    if @comment.update_attributes(comment_params)
+      respond_to do |format|
+        format.html { redirect_to card_path(@comment.card_id) }
+        format.js
+      end
+    else
+      render :edit
+    end
+  end
+
+  def show
+    @comment = Comment.find(params[:id])
+   
+  end
+
   private
 
   def comment_params

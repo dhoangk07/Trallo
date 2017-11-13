@@ -1,4 +1,4 @@
-$('#new-list-<%= @list.id %> ul').append("<%= j(render 'boards/card_modal', card: @card) %>");
+$('#new-list-<%= @list.id %> ul').prepend("<%= j(render 'boards/card_modal', card: @card) %>");
 $('#new-list-<%= @list.id %> #card_name').val('');
 $('#new-list-<%= @list.id %> #card_description').val('');
 
