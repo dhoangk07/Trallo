@@ -2,6 +2,7 @@
 <html>
   <head>
     <title>Trallo</title>
+
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -11,23 +12,24 @@
   <body>
   	
      
-     <% if user_signed_in? %>
-        <%= link_to "Boards", boards_path %>
+      <% if user_signed_in? %>
+
+         <h1><%= fa_icon "balance-scale" %>Trallo</h1>
+            <%= link_to "Boards", boards_path %>
+
+          <li><%= link_to destroy_user_session_path, method: :delete  do %></li>
+              <%= fa_icon "sign-out" %>
+              <% end %>
 
 
-
-
-
-
-
-
-       <li><%= link_to('Logout', destroy_user_session_path, method: :delete) %></li>
-    <% else %>
-      <li><%= link_to('Login', new_user_session_path)  %></li>
-    <% end %>
-    
-     <p class="notice"><%= notice %></p>
-     <p class="alert"><%= alert %></p>
-    <%= yield %>
+          <% else %>
+          <li><%= link_to('Login', new_user_session_path)  do %></li>
+              <%= fa_icon "sign-in" %>
+            <% end %>
+      <% end %>
+        
+         <p class="notice"><%= notice %></p>
+         <p class="alert"><%= alert %></p>
+        <%= yield %>
   </body>
 </html>
