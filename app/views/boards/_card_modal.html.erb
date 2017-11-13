@@ -11,22 +11,44 @@
 		</h3>
 	    <p><%= card.description %></p>
 
-	    <ul class='comments'>
-	    	<% card.comments.each do |comment| %>
-	    	  <%= render 'comment_modal', comment: comment %>
-	    	<% end %>
-	    	
-	    </ul>
+        <div>
+		    <% card.labels.each do |label| %>
+		      <div class='label' style="background-color: <%= label.color %>"></div>
+		    <% end %>
+		</div>
+
+
+	    <select class="label-select" name="state">
+	    	<% card.labels.each do |label| %>
+			  <option value="<% %>" style="{background-color: 'red' ;}"><%= label.name %></option>
+
+			<% end %>
+
+			
+		
+		</select>
+		
 	    <div>
 	    	<% comment = card.comments.new %>
 	    	<%= form_for [card, comment], remote: true do |f|%>
 	    	  <%= f.hidden_field :user_id, value: current_user.id %>
 	    	  <%= f.hidden_field :card_id, value: card.id %>
-	    	  <%= f.text_field :content, placeholder: "Comment..." %>
+	    	  <p><%= fa_icon "comment-o" %>  Add Comment</p>
+	    	  <p><%= f.text_field :content, class: 'write-a-comment', placeholder: "Write a comment..." %></p>
 	    	<% end %>
 	    </div>
+
+	    <ul class='comments'>
+	    	<% card.comments.each do |comment| %>
+	    	  <% if comment.persisted? %>
+		    	  <%= render 'comment_modal', comment: comment %>
+		      <% end %>
+	    	<% end %>
+	    	
+	    </ul>
+	    
 	</div>
 
-	
+
 	<a href="#modal-<%= card.id %>" rel="modal:open" class='card-name'><%= card.name %></a>
 </div>
