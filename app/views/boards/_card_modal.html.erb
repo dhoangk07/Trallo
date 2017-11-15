@@ -17,16 +17,14 @@
 		    <% end %>
 		</div>
 
+		<div id="ex1" class="modal">
+		  <p>Thanks for clicking. That felt good.</p>
+		  <a href="#" rel="modal:close">Close</a>
+		</div>
 
-	    <select class="label-select" name="state">
-	    	<% card.labels.each do |label| %>
-			  <option value="<% %>" style="{background-color: 'red' ;}"><%= label.name %></option>
+		<p><a id='label-select' href="#">Open Modal</a></p>
 
-			<% end %>
 
-			
-		
-		</select>
 		
 	    <div>
 	    	<% comment = card.comments.new %>

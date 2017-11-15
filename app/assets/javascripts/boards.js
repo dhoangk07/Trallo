@@ -3,5 +3,8 @@ $(document).ready(function() {
 		$(event.target).find('a').click();
 	});
 
-	$('.label-select').select2();
+	$('#label-select').on('click', function(event) {
+		$('#ex1').modal({closeExisting: false});
+		event.preventDefault();
+	})
 });
