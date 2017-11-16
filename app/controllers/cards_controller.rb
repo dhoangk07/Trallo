@@ -19,6 +19,7 @@ class CardsController < ApplicationController
     # params
     @card = Card.new(card_params)
     @list = @card.list
+
     if @card.save
       respond_to do |format|
         format.html { redirect_to list_path(@card.list) }
@@ -60,6 +61,6 @@ class CardsController < ApplicationController
 private
 
   def card_params
-    params.require(:card).permit(:name, :list_id, :file , :description,)
+    params.require(:card).permit(:name, :list_id, :file , :description, :user_id)
   end
 end

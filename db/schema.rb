@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171113144845) do
+ActiveRecord::Schema.define(version: 20171115130453) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(version: 20171113144845) do
     t.integer "file_file_size"
     t.datetime "file_updated_at"
     t.string "description"
+    t.integer "user_id"
   end
 
   create_table "cards_labels", force: :cascade do |t|
@@ -44,6 +45,13 @@ ActiveRecord::Schema.define(version: 20171113144845) do
     t.datetime "updated_at", null: false
     t.integer "card_id"
     t.integer "label_id"
+  end
+
+  create_table "cards_users", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "card_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "comments", force: :cascade do |t|
@@ -77,9 +85,26 @@ ActiveRecord::Schema.define(version: 20171113144845) do
     t.integer "board_id"
   end
 
+  create_table "ucs", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.integer "card_id"
+  end
+
   create_table "uploads", force: :cascade do |t|
     t.string "name"
     t.string "attachment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "user_cards", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "usercards", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -12,8 +12,7 @@
 
   <small id='editer-<%=comment.id %>'><%= fa_icon "eye" %> :<%= time_ago_in_words(comment.created_at) %>  - </small>
   <%= link_to 'Edit', edit_card_comment_path(comment.card, comment) , remote: true %> -
+  
   <%= link_to 'Destroy', card_comment_path(comment.card, comment),'data-confirm' => 'Are you sure?' ,method: :delete, remote: true %>
+  
 </div>
-
-
-	   

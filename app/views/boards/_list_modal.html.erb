@@ -22,6 +22,7 @@
 			<% new_card = list.cards.new %> 
 			<%= form_for [list, new_card],  remote: true do |f| %>
 			<%= f.hidden_field :list_id, value: list.id %>
+			<%= f.hidden_field :user_id, value: current_user.id %>
 			<%= f.text_field :name, placeholder: :name %>
 			<%= f.text_field :description, placeholder: :description %>
 			<%= f.submit "Add a card ..."%>
