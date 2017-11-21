@@ -25,6 +25,5 @@ class Comment < ApplicationRecord
     	 	UserMailer.comment_created(member).deliver
   		end
 
-  		if
    end
 end
