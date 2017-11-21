@@ -1,5 +1,8 @@
 <h1><%= @board.name %></h1>
 
+<label>due date</label>
+		<input id='board-due-date' type='text' />
+
 <ul id='list'>
 	<% @board.lists.each do |list| %>
 		

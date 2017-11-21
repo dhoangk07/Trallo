@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171115130453) do
+ActiveRecord::Schema.define(version: 20171121001937) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(version: 20171115130453) do
     t.datetime "file_updated_at"
     t.string "description"
     t.integer "user_id"
+    t.datetime "due_date"
   end
 
   create_table "cards_labels", force: :cascade do |t|
