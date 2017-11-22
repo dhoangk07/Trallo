@@ -49,4 +49,5 @@
 
 
 	<a href="#modal-<%= card.id %>" rel="modal:open" class='card-name'><%= card.name %></a>
+	<a id="comment-count-<%=comment.card.id%>"><%= fa_icon "commenting-o" %> <%= card.comments.count %></a>
 </div>

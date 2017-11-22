@@ -1,2 +1,3 @@
 $('#modal-<%= @card.id %> .comments').prepend("<%= j(render 'boards/comment_modal', comment: @comment) %>");
 $('#modal-<%= @card.id %> #comment_content').val('');
+$('#comment-count-<%=@comment.card.id%>').html("<%= @card.comments.count %>");
