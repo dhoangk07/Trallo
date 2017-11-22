@@ -1,10 +1,14 @@
 <div id="card-<%= card.id %>" class='card-in-list'> 
 	<div id="modal-<%= card.id %>" class="modal">
+
+
 		<h3>
 			<%= card.name %>
 
 		<%= link_to list_card_path(card.list, card), class: 'card-trash', method: :delete, remote: true do %>
 			<%= fa_icon "trash" %>
+
+
 		
 		<% end %>
 
@@ -24,17 +28,49 @@
 
 		<p><a id='label-select' href="#">Open Modal</a></p>
 
-
+ 		<p><%= fa_icon "comment-o" %>  Add Comment</p>
 		
-	    <div>
+	    
+
+
+	    <div class="comment-box">
 	    	<% comment = card.comments.new %>
 	    	<%= form_for [card, comment], remote: true do |f|%>
 	    	  <%= f.hidden_field :user_id, value: current_user.id %>
 	    	  <%= f.hidden_field :card_id, value: card.id %>
-	    	  <p><%= fa_icon "comment-o" %>  Add Comment</p>
 	    	  <p><%= f.text_field :content, class: 'write-a-comment', placeholder: "Write a comment..." %></p>
-	    	<% end %>
+	    	  
+	    	 <% end %>
+	    	
+
+	    	<div class="comment-box-options">
+	    		<a class="comment-box-options-item js-comment-add-attachment">
+	    			<span class="icon-sm icon-attachment">
+	    				<%= fa_icon "paperclip" %>
+	    			</span>
+	    		</a>
+
+	    		<a class="comment-box-options-item js-comment-mention-member"">
+	    			<span class="icon-sm icon-mention">
+	    				<%= fa_icon "at" %>
+	    			</span>
+	    		</a>
+
+	    		<a class="comment-box-options-item js-comment-add-emoji">
+	    			<span class="icon-sm icon-emoji">
+	    				<%= fa_icon "meh-o" %>
+	    			</span>
+	    		</a>
+
+	    		<a class="comment-box-options-item js-comment-add-attachment">
+	    			<span class="icon-sm icon-attachment">
+	    				<%= fa_icon "id-card" %>
+	    			</span>
+	    		</a>
+	    	</div>
 	    </div>
+
+
 
 	    <ul class='comments'>
 	    	<% card.comments.each do |comment| %>
@@ -49,5 +85,6 @@
 
 
 	<a href="#modal-<%= card.id %>" rel="modal:open" class='card-name'><%= card.name %></a>
-	<a id="comment-count-<%=comment.card.id%>"><%= fa_icon "commenting-o" %> <%= card.comments.count %></a>
+	<%= fa_icon "commenting-o" %> <a id="comment-count-<%=comment.card.id%>"> <%= card.comments.count %></a> 
+
 </div>
