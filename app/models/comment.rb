@@ -18,11 +18,11 @@ class Comment < ApplicationRecord
   	  	 # send to who left comments on the card
   	  	new_users = []
   	  	card.comments.each do |comment|
-  	  		new_users.append(comment.user, self)
+  	  		new_users.append(comment.user)
   	  	end
 
-  	  	new_users.each do |member|
-    	 	UserMailer.comment_created(member).deliver
+  	  	new_users.uniq.each do |member|
+    	 	UserMailer.comment_created(member,self).deliver
   		end
 
    end
