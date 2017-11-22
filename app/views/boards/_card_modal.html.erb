@@ -8,12 +8,17 @@
 		
 		<% end %>
 
+	<div >
+  	
+
         <label>Set due date</label>
         <%= form_for [card.list, card], remote: true do |f| %>
 	        <%= f.text_field :due_date, placeholder: 'Set due date. e.g: 2017-12-10 12:00pm'  %>
 	        <%= f.submit :set %>
+	        <p id='due-date-zone-<%= card.id %>'><%= card.due_date %></p>
+  		
 		<% end %>
-
+	</div>
 		</h3>
 	    <p><%= card.description %></p>
 
@@ -29,7 +34,7 @@
 		</div>
 
 		<p><a id='label-select' href="#">Open Modal</a></p>
-`
+
 
 		
 	    <div>
