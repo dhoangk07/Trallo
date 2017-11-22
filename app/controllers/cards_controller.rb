@@ -41,7 +41,10 @@ class CardsController < ApplicationController
   def update
     @card = Card.find(params[:id])
     if @card.update_attributes(card_params)
-      redirect_to list_card_path(@card)
+      respond_to do |format|
+        format.html { redirect_to list_card_path(@card) }
+        format.js
+      end
     else
       render :edit
     end
@@ -61,6 +64,6 @@ class CardsController < ApplicationController
 private
 
   def card_params
-    params.require(:card).permit(:name, :list_id, :file , :description, :user_id)
+    params.require(:card).permit(:name, :list_id, :file , :description, :user_id, :due_date)
   end
 end
