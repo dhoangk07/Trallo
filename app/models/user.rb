@@ -6,8 +6,12 @@ class User < ApplicationRecord
 
   has_many :boards
   has_many :comments
+
   has_many :cards_users
   has_many :cards, through: :cards_users, dependent: :destroy
+
+  has_many :lists_users
+  has_many :lists, through: :lists_users, dependent: :destroy
 
   def name 
   		result = ""
@@ -20,12 +24,9 @@ class User < ApplicationRecord
   	end
   	result
   end
+  
    validates_presence_of :first_name
    validates_presence_of :last_name
-
-   
-
-
 
    after_create :send_welcome_email
 

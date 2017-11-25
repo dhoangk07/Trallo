@@ -6,7 +6,7 @@ class ListsController < ApplicationController
   # action
   def show
     @list = List.find(params[:id])
-    @comment = @list.comments.new
+    #@comment = @list.comments.new
   end
  
   # action
@@ -58,7 +58,7 @@ class ListsController < ApplicationController
 private
 
   def list_params
-    params.require(:list).permit(:name, :board_id)
+    params.require(:list).permit(:name, :board_id, :user_id, :card_id)
   end
 end
 
