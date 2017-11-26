@@ -1,8 +1,5 @@
 <h1><%= @board.name %></h1>
 
-<label>due date</label>
-		<input id='board-due-date' type='text' />
-
 <ul id='list'>
 	<% @board.lists.each do |list| %>
 		
@@ -16,6 +13,7 @@
 <% new_list = @board.lists.new %>
 <%= form_for [@board, new_list], remote: true do |f| %>
   <%= f.hidden_field :board_id, value: @board.id %>
+  <%= f.hidden_field :user_id, value: current_user.id %>
   <%= f.text_field :name, placeholder: "Add a list..." %>
 <% end %>
 </div>

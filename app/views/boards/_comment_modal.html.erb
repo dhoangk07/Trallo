@@ -1,12 +1,14 @@
 <div id="comment-<%= comment.id %>" class='comment-in-card'>
-  <b><%= fa_icon "user" %> :<%= comment.user.name %></b>
+  <b><%= fa_icon "user" %> :<%= comment.user_id %></b>
   
   <div class='comment-content1'>
 
   	<div id='comment-zone-<%= comment.id %>'><%= comment.content %>
   		
   	</div>
-  	
+
+  
+  
 
   </div>
 
@@ -14,5 +16,5 @@
   <%= link_to 'Edit', edit_card_comment_path(comment.card, comment) , remote: true %> -
   
   <%= link_to 'Destroy', card_comment_path(comment.card, comment),'data-confirm' => 'Are you sure?' ,method: :delete, remote: true %>
-  
+
 </div>
