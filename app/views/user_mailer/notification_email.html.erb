@@ -5,6 +5,14 @@
   </head>
   <body>
     <h1>The card already destroyed by <%= @user.name %></h1>
+
+    <h1>The card included <%= @card.comments.count %> comments</h1>
+
+    <ul> <% @card.comments.each_with_index do |comment,index| %> 
+
+    <p><%=index%>.<%= comment.content %></p>
+  <% end %>
+   </ul>
     
   </body>
 </html>

@@ -6,6 +6,12 @@
   <body>
     <h1>The list already destroyed by <%= @user.name %></h1>
     <h1>The list included <%= @list.cards.count %> cards</h1>
-    
+
+   <ul> <% @list.cards.each_with_index do |card,index| %> 
+
+		<p><%=index%>.<%= card.name %></p>
+	<% end %>
+   </ul>
+
   </body>
 </html>

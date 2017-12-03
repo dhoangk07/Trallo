@@ -7,7 +7,8 @@ class UserMailer < ApplicationMailer
     mail(:to => user.email, :subject => "Welcome to My Awesome Site")
   end
 
-  def notification_email(user)
+  def notification_email(user, card)
+    @card = card
     @user = user
     @url  = "http://gmail.com/login"
     mail(:to => user.email, :subject => "Card Destroyed.")

@@ -9,16 +9,10 @@ class Card < ApplicationRecord
 
     has_many :cards_labels
 	has_many :labels, through: :cards_labels
-	has_many :comments
+	has_many :comments, dependent: :destroy
 	has_many :cards_users
 	has_many :users, through: :cards_users, dependent: :destroy
 	belongs_to :user # owner
-
-	after_destroy :send_notification_email
-
-	def send_notification_email
-    	UserMailer.notification_email(user).deliver
-    end
 
 end
 
