@@ -13,7 +13,8 @@ class UserMailer < ApplicationMailer
     mail(:to => user.email, :subject => "Card Destroyed.")
   end
 
-  def notification_email_destroy_list(user)
+  def notification_email_destroy_list(user, list)
+    @list=list
     @user = user
     @url  = "http://gmail.com/login"
     mail(:to => user.email, :subject => "List Destroyed.")

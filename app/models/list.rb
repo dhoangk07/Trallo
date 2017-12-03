@@ -7,7 +7,7 @@ class List < ApplicationRecord
 	after_destroy :send_notification_email_destroy_list
   
 	def send_notification_email_destroy_list
-    	UserMailer.notification_email_destroy_list(user).deliver
+    	UserMailer.notification_email_destroy_list(user, self).deliver
     end
 
 end
