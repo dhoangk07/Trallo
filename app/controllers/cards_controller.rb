@@ -62,6 +62,18 @@ class CardsController < ApplicationController
     #redirect_to list_cards_path
   end
 
+  def invite_member
+    
+    @card = Card.find(params[:id])
+    @user = User.find(params[:card][:new_member_id])
+    @card.users.append(@user)
+
+    respond_to do |format|
+      format.html { redirect_to list_path(@card.list_id) }
+      format.js
+    end
+  end
+
 private
 
   def card_params

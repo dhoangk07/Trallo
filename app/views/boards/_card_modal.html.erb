@@ -24,7 +24,22 @@
 		<% end %>
 	</div>
 		</h3>
-	    <p><%= card.description %></p>
+
+	<label>Invite Member </label>
+		<%= form_for card, url: invite_member_list_card_path(card.list, card), method: :put, remote: true do |f|%>
+			<%= f.select :new_member_id, User.where.not(id: card.users).pluck(:email, :id)%>
+			<%= f.submit :invite %>
+		<%end%>
+
+	<ul id = "card-members-<%= card.id %>">
+		<% card.users.each_with_index do |user, index| %>
+  		<p id = "new-member-id-update-<%= card.id %>"><%=index+1%>.<%=user.name%> :<%=user.email%></p>
+  
+		<%end%>
+
+	</ul>
+
+    <p><%= card.description %></p>
 
         <div>
 		    <% card.labels.each do |label| %>

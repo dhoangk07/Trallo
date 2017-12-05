@@ -14,5 +14,7 @@ class Card < ApplicationRecord
 	has_many :users, through: :cards_users, dependent: :destroy
 	belongs_to :user # owner
 
+	attr_accessor :new_member_id
+
 end
 

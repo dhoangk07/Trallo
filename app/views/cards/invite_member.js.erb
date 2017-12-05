@@ -1,0 +1,2 @@
+$('#card-members-<%= @card.id %>').append("<p><%= @card.users.count + 1 %>.<%= @user.name %> : <%= @user.email %></p> ");
+$('#card_new_member_id option[value="<%=@user.id%>"]').remove();
