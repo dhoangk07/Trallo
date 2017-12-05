@@ -16,5 +16,7 @@ class Card < ApplicationRecord
 
 	attr_accessor :new_member_id
 
+	attr_accessor :remove_member_id
+
 end
 

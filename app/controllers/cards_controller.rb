@@ -19,6 +19,7 @@ class CardsController < ApplicationController
     # params
     @card = Card.new(card_params)
     @list = @card.list
+    @board = @list.board
 
     if @card.save
       respond_to do |format|
@@ -74,6 +75,18 @@ class CardsController < ApplicationController
       format.js
     end
   end
+
+  def remove_member
+    @card = Card.find(params[:id])
+    @user = User.find params[:user_id]
+    @card.users.where(id: params[:user_id]).destroy_all
+    
+    respond_to do |format|
+      format.html { redirect_to list_card_path(@card)}
+      format.js
+    end
+  end
+
 
 private
 

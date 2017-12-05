@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   resources :lists, only: [] do
 		resources :cards do
       put :invite_member, on: :member    #list/22/card/11/invite_member
+      delete :remove_member, on: :member   
     end
   end
 
