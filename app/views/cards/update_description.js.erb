@@ -1,0 +1,1 @@
+$("#edit-description-update-<%= @card.id %>").html("<%= j(link_to 'Edit the description...' , edit_description_list_card_path(@card.list, @card), remote: true) %><p><%= @card.description%></p>");

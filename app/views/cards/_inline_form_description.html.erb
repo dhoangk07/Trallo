@@ -1,0 +1,4 @@
+<%= form_for card, url: update_description_list_card_path(card.list, card), method: :put, remote: true do |f| %>
+  <p id='edit-description-update-<%= card.id %>'> <%= f.text_field :description , placeholder: "Add a more detailed description"%></p>
+  
+<% end %>

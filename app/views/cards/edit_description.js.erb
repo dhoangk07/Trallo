@@ -1,0 +1,2 @@
+$('#edit-description-<%= @card.id %>').html("<%= j(render 'inline_form_description', card: @card) %>");
+$("#edit-description-update-<%= @card.id %>").prepend("<%= @card.description%>");

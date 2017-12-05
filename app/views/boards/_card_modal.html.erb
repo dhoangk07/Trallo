@@ -43,6 +43,7 @@
 
 	</ul>
 
+	<div id = "edit-description-<%=card.id%>"><%= link_to "Edit the description..." , edit_description_list_card_path(card.list, card), remote: true%></div>
 	
     <p><%= card.description %></p>
 

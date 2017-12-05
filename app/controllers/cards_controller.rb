@@ -37,6 +37,11 @@ class CardsController < ApplicationController
   def edit
     @card = Card.find(params[:id])
     @list = @card.list
+
+    respond_to do |format|
+        format.html { redirect_to list_card_path(@card) }
+        format.js
+      end
   end
 
   def update
@@ -84,6 +89,26 @@ class CardsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to list_card_path(@card)}
       format.js
+    end
+  end
+
+  def edit_description
+    @card = Card.find(params[:id])
+    @list = @card.list
+
+    respond_to do |format|
+        format.html { redirect_to list_card_path(@card) }
+        format.js
+      end
+  end
+
+  def update_description
+    @card = Card.find(params[:id])
+    if @card.update_attributes(card_params)
+      respond_to do |format|
+        format.html { redirect_to list_card_path(@card) }
+        format.js
+      end
     end
   end
 
