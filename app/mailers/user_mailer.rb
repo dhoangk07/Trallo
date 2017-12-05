@@ -27,6 +27,13 @@ class UserMailer < ApplicationMailer
     @comment = comment
     mail(:to => user.email, :subject => "Comment Created.")
   end
+
+  def notification_welcome_member_invited_card(user, card)
+    @card = card
+    @user = user
+    @url  = "http://gmail.com/login"
+    mail(:to => user.email, :subject => "Welcome New Member.")
+  end
 end
 
 

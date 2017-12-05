@@ -63,9 +63,10 @@ class CardsController < ApplicationController
   end
 
   def invite_member
-    
+
     @card = Card.find(params[:id])
     @user = User.find(params[:card][:new_member_id])
+      UserMailer.notification_welcome_member_invited_card(@card.user, @card).deliver
     @card.users.append(@user)
 
     respond_to do |format|
