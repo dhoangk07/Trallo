@@ -32,9 +32,8 @@
 		<%end%>
 
 	<ul id = "card-members-<%= card.id %>">
-		<% card.users.each_with_index do |user, index| %>
-  		<p id = "new-member-id-update-<%= card.id %>"><%=index+1%>.<%=user.name%> :<%=user.email%>
-  			
+		<% card.users.each_with_index do |user| %>
+  		<p id = "new-member-id-update-<%= card.id %>"><%=initial_name(user)%> 
   			<%= link_to remove_member_list_card_path(card.list, card, { user_id: user.id }),'data-confirm' => 'Are you sure?' , method: :delete, remote: true do |f| %>
             <%= fa_icon "trash" %>
             <% end %>
@@ -44,6 +43,7 @@
 
 	</ul>
 
+	
     <p><%= card.description %></p>
 
         <div>
