@@ -1,7 +1,7 @@
 <h1><%= @board.name %></h1>
 
 <ul id='list'>
-	<% @board.lists.each do |list| %>
+	<% @board.lists.order('created_at DESC').each do |list| %>
 		
 	  <%= render('list_modal', board: @board, list: list) %>
   
