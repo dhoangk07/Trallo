@@ -1,1 +1,1 @@
-$('#due-date-zone-<%= @card.id %>').prepend("<%=@card.due_date %>");
+$('#due-date-zone-<%= @card.id %>').prepend("<%= @card.due_date.strftime('%j %b %Y') %>");

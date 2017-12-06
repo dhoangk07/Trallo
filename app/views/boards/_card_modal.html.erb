@@ -85,7 +85,7 @@
 		        <%= form_for [card.list, card], remote: true do |f| %>
 			        <%= f.text_field :due_date, placeholder: 'Set due date. e.g: 2017-12-10 12:00pm'  %>
 			        <%= f.submit :set %>
-			        <p id='due-date-zone-<%= card.id %>'><%= card.due_date.strftime('%b %Y') if card.due_date.present? %></p>
+			        <p id='due-date-zone-<%= card.id %>'><%= card.due_date.strftime('%e %b %Y') if card.due_date.present? %></p>
 		  		
 				<% end %>
 			</div>
