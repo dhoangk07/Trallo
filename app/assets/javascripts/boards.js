@@ -1,5 +1,5 @@
 $(document).ready(function() {
-	$('.card-in-list').on('click', function(event) {
+	$('#list').on('click', '.card-in-list', function(event) {
 		$(event.target).find('a').click();
 	});
 
