@@ -9,7 +9,7 @@
 		<div id="" style="overflow-y: scroll; height:200px;"> 
 
 		  	<ul class="cards"> 
-		  		<% list.cards.each do |card| %> 
+		  		<% list.cards.order('created_at DESC').each do |card| %> 
 
 		  		  <%= render 'card_modal', card: card %>
 

@@ -96,3 +96,21 @@ ul.comments {
   height: 20px;
   display: inline-flex;
 }
+
+.left {
+  width: 60%;
+  float: left;
+  
+}
+
+.right {
+    width: 35%;
+    float: left;
+}
+
+.background {
+  background-image: url("background.jpg");
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 100%;
+}

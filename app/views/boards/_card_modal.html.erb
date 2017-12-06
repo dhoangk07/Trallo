@@ -1,117 +1,117 @@
 <div id="card-<%= card.id %>" class='card-in-list'> 
 	<div id="modal-<%= card.id %>" class="modal">
 
-
 		<h3>
 			<%= card.name %>
-
-		<%= link_to list_card_path(card.list, card), class: 'card-trash', method: :delete, remote: true do %>
-			<%= fa_icon "trash" %>
-
-
-		
-		<% end %>
-
-	<div >
-  	
-
-        <label>Set due date</label>
-        <%= form_for [card.list, card], remote: true do |f| %>
-	        <%= f.text_field :due_date, placeholder: 'Set due date. e.g: 2017-12-10 12:00pm'  %>
-	        <%= f.submit :set %>
-	        <p id='due-date-zone-<%= card.id %>'><%= card.due_date %></p>
-  		
-		<% end %>
-	</div>
+			<%= link_to list_card_path(card.list, card), class: 'card-trash', method: :delete, remote: true do %>
+				<%= fa_icon "trash" %>
+			<% end %>
 		</h3>
 
-	<label>Invite Member </label>
-		<%= form_for card, url: invite_member_list_card_path(card.list, card), method: :put, remote: true do |f|%>
-			<%= f.select :new_member_id, User.where.not(id: card.users).pluck(:email, :id), {}, { id: "select-member-#{card.id}" }%>
-			<%= f.submit :invite %>
-		<%end%>
 
-	<ul id = "card-members-<%= card.id %>">
-		<% card.users.each_with_index do |user| %>
-  		<p id = "new-member-id-update-<%= card.id %>"><%=initial_name(user)%> 
-  			<%= link_to remove_member_list_card_path(card.list, card, { user_id: user.id }),'data-confirm' => 'Are you sure?' , method: :delete, remote: true do |f| %>
-            <%= fa_icon "trash" %>
-            <% end %>
-  		</p>
-  
-		<%end%>
-
-	</ul>
-
-	<div id = "edit-description-<%=card.id%>"><%= link_to "Edit the description..." , edit_description_list_card_path(card.list, card), remote: true%></div>
-	
-    <p><%= card.description %></p>
-
-        <div>
-		    <% card.labels.each do |label| %>
-		      <div class='label' style="background-color: <%= label.color %>"></div>
-		    <% end %>
-		</div>
-
-		<div id="ex1" class="modal">
-		  <p>Thanks for clicking. That felt good.</p>
-		  <a href="#" rel="modal:close">Close</a>
-		</div>
-
-		<p><a id='label-select' href="#">Open Modal</a></p>
-
- 		<p><%= fa_icon "comment-o" %>  Add Comment</p>
+		<div class='left'>
+			<div id = "edit-description-<%=card.id%>"><%= link_to "Edit the description..." ,edit_description_list_card_path(card.list, card), remote: true%></div>
 		
-	    
+		    <p><%= card.description %></p>
+
+		    <div>
+			    <% card.labels.each do |label| %>
+			      <div class='label' style="background-color: <%= label.color %>"></div>
+			    <% end %>
+			</div>
+
+			<div id="ex1" class="modal">
+			  <p>Thanks for clicking. That felt good.</p>
+			  <a href="#" rel="modal:close">Close</a>
+			</div>
+
+			<p><a id='label-select' href="#">Open Modal</a></p>
+
+			<p><%= fa_icon "comment-o" %>  Add Comment</p>
+
+		    <div class="comment-box">
+		    	<% comment = card.comments.new %>
+		    	<%= form_for [card, comment], remote: true do |f|%>
+		    	  <%= f.hidden_field :user_id, value: current_user.id %>
+		    	  <%= f.hidden_field :card_id, value: card.id %>
+		    	  <p><%= f.text_field :content, class: 'write-a-comment', placeholder: "Write a comment..." %></p>
+		    	  
+		    	 <% end %>
+		    	
+
+		    	<div class="comment-box-options">
+		    		<a class="comment-box-options-item js-comment-add-attachment">
+		    			<span class="icon-sm icon-attachment">
+		    				<%= fa_icon "paperclip" %>
+		    			</span>
+		    		</a>
+
+		    		<a class="comment-box-options-item js-comment-mention-member"">
+		    			<span class="icon-sm icon-mention">
+		    				<%= fa_icon "at" %>
+		    			</span>
+		    		</a>
+
+		    		<a class="comment-box-options-item js-comment-add-emoji">
+		    			<span class="icon-sm icon-emoji">
+		    				<%= fa_icon "meh-o" %>
+		    			</span>
+		    		</a>
+
+		    		<a class="comment-box-options-item js-comment-add-attachment">
+		    			<span class="icon-sm icon-attachment">
+		    				<%= fa_icon "id-card" %>
+		    			</span>
+		    		</a>
+		    	</div>
+		    </div>
 
 
-	    <div class="comment-box">
-	    	<% comment = card.comments.new %>
-	    	<%= form_for [card, comment], remote: true do |f|%>
-	    	  <%= f.hidden_field :user_id, value: current_user.id %>
-	    	  <%= f.hidden_field :card_id, value: card.id %>
-	    	  <p><%= f.text_field :content, class: 'write-a-comment', placeholder: "Write a comment..." %></p>
-	    	  
-	    	 <% end %>
-	    	
 
-	    	<div class="comment-box-options">
-	    		<a class="comment-box-options-item js-comment-add-attachment">
-	    			<span class="icon-sm icon-attachment">
-	    				<%= fa_icon "paperclip" %>
-	    			</span>
-	    		</a>
+		    <ul class='comments'>
+		    	<% card.comments.each do |comment| %>
+		    	  <% if comment.persisted? %>
+			    	  <%= render 'comment_modal', comment: comment %>
+			      <% end %>
+		    	<% end %>
+		    	
+		    </ul>
+			
+		</div>
 
-	    		<a class="comment-box-options-item js-comment-mention-member"">
-	    			<span class="icon-sm icon-mention">
-	    				<%= fa_icon "at" %>
-	    			</span>
-	    		</a>
+		<div class='right'>
+			<div >
+		        <label>Set due date</label>
+		        <%= form_for [card.list, card], remote: true do |f| %>
+			        <%= f.text_field :due_date, placeholder: 'Set due date. e.g: 2017-12-10 12:00pm'  %>
+			        <%= f.submit :set %>
+			        <p id='due-date-zone-<%= card.id %>'><%= card.due_date.strftime('%b %Y') if card.due_date.present? %></p>
+		  		
+				<% end %>
+			</div>
+				
 
-	    		<a class="comment-box-options-item js-comment-add-emoji">
-	    			<span class="icon-sm icon-emoji">
-	    				<%= fa_icon "meh-o" %>
-	    			</span>
-	    		</a>
+			<label>Invite Member </label>
+			<%= form_for card, url: invite_member_list_card_path(card.list, card), method: :put, remote: true do |f|%>
+				<%= f.select :new_member_id, User.where.not(id: card.users).pluck(:email, :id), {}, { id: "select-member-#{card.id}" }%>
+				<%= f.submit :invite %>
+			<%end%>
 
-	    		<a class="comment-box-options-item js-comment-add-attachment">
-	    			<span class="icon-sm icon-attachment">
-	    				<%= fa_icon "id-card" %>
-	    			</span>
-	    		</a>
-	    	</div>
-	    </div>
+			<ul id = "card-members-<%= card.id %>">
+				<% card.users.each_with_index do |user| %>
+			  		<p id = "new-member-id-update-<%= card.id %>"><%=initial_name(user)%> 
+			  			<%= link_to remove_member_list_card_path(card.list, card, { user_id: user.id }),'data-confirm' => 'Are you sure?' , method: :delete, remote: true do |f| %>
+			            <%= fa_icon "trash" %>
+			            <% end %>
+			  		</p>
+				<%end%>
+			</ul>
+			
+		</div>
 
+		
 
-
-	    <ul class='comments'>
-	    	<% card.comments.each do |comment| %>
-	    	  <% if comment.persisted? %>
-		    	  <%= render 'comment_modal', comment: comment %>
-		      <% end %>
-	    	<% end %>
-	    	
-	    </ul>
+		
 	    
 	</div>
 
