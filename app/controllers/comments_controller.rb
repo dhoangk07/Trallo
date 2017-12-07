@@ -4,6 +4,7 @@ class CommentsController < ApplicationController
     @comment = Comment.new(comment_params)
     @card = Card.find(params[:card_id])
   	if @comment.save
+       CommentCreatedMailerJob.perform_later(@comment)
       respond_to do |format|
         format.html { redirect_to board_list_path(@comment.list.board, @comment.list) }
         format.js
