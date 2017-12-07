@@ -126,6 +126,15 @@ end
     end
   end
 
+  def select_label
+    @card = Card.find(params[:id])
+    @label = Label.find(params[:card][:select_label_id])
+    @card.labels.append(@label)
+    respond_to do |format|
+      format.html { redirect_to list_path(@card.list_id) }
+      format.js
+    end
+  end
 
 private
 

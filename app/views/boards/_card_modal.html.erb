@@ -8,7 +8,6 @@
 			<% end %>
 		</h3>
 
-
 		<div class='left'>
 			<div id = "edit-description-<%=card.id%>"><%= link_to "Edit the description..." ,edit_description_list_card_path(card.list, card), remote: true%></div>
 		
@@ -37,7 +36,6 @@
 		    	  <p><%= f.text_field :content, class: 'write-a-comment', placeholder: "Write a comment..." %></p>
 		    	  
 		    	 <% end %>
-		    	
 
 		    	<div class="comment-box-options">
 		    		<a class="comment-box-options-item js-comment-add-attachment">
@@ -65,8 +63,6 @@
 		    		</a>
 		    	</div>
 		    </div>
-
-
 
 		    <ul class='comments'>
 		    	<% card.comments.each do |comment| %>
@@ -118,15 +114,27 @@
 
 			</div>
 
-			
+			<div>
+
+			<label>Select Labels</label>
+				<%= form_for card, url: select_label_list_card_path(card.list, card), method: :put, remote: true do |f|%>
+				<p><%= f.select :select_label_id, Label.pluck(:name, :id)%>
+				<%= f.submit :Select%>
+				</p>
+				<%end%>
+
+			</div>
+
+			<ul id = "select-labels-<%= card.id %>">
+				<% card.labels.each do |label| %>
+			  		<p><%= label.name %></p>
+			    <% end %>
+			  
+			</ul>
+
 		</div>
 
-		
-
-		
-	    
 	</div>
-
 
 	<a href="#modal-<%= card.id %>" rel="modal:open" class='card-name'><%= card.name %></a>
 	<%= fa_icon "commenting-o" %> <a id="comment-count-<%=comment.card.id%>"> <%= card.comments.count %></a> 

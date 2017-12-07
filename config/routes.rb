@@ -15,11 +15,13 @@ Rails.application.routes.draw do
       put :move_card, on: :member
       get :edit_description, on: :member 
       put :update_description, on: :member  
+      put :select_label, on: :member
     end
   end
 
   resources :cards, only: [] do
-    resources :comments
+    resources :comments 
+    resources :labels
   end
 
   root to: 'dashboards#index'

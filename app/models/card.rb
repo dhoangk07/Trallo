@@ -20,6 +20,9 @@ class Card < ApplicationRecord
 
 	attr_accessor :list_member_id
 
+	attr_accessor :select_label_id
+
+
 	def self.notify_due_date
 		where(due_date: Time.current.to_date).find_each do |card|
 			card.notify_owner_due_date
