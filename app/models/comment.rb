@@ -2,18 +2,14 @@ class Comment < ApplicationRecord
 	belongs_to :card
 	belongs_to :user
 
-
-	after_create :comment_created
-
    	def comment_created
       
       #send card's owner
-    	UserMailer.comment_created(card.user, self).deliver
-      	
+    	
+      	a = [card.user]
       	# send to card's member
-      	card.users.each do |member|
-      		UserMailer.comment_created(member, self).deliver
-  		end
+      	
+        b = card.users
   	  	
   	  	 # send to who left comments on the card
   	  	new_users = []
@@ -21,9 +17,14 @@ class Comment < ApplicationRecord
   	  		new_users.append(comment.user)
   	  	end
 
-  	  	new_users.uniq.each do |member|
-    	 	UserMailer.comment_created(member,self).deliver
-  		end
+        c = new_users
 
+        #UserMailer.comment_created(card.user, self).deliver
+
+        d = (a+b+c).uniq
+
+        d.each do |user|
+          UserMailer.comment_created(user, self).deliver
+        end
    end
 end
