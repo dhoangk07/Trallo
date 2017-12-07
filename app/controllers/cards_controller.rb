@@ -92,6 +92,20 @@ class CardsController < ApplicationController
     end
   end
 
+  def move_card
+  @card = Card.find(params[:id])
+  @list = List.find(params[:card][:list_member_id])
+  @board = @list.board
+  @card.list_id = @list.id
+  @card.save
+  
+  respond_to do |format|
+    format.html { redirect_to list_card_path(@card)}
+    format.js
+  end
+end
+
+
   def edit_description
     @card = Card.find(params[:id])
     @list = @card.list

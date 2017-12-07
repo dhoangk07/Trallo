@@ -1,0 +1,2 @@
+$('#card-<%= @card.id %>').remove();
+$('#new-list-<%= @list.id %> ul').prepend("<%= j(render 'boards/card_modal', card: @card) %>");

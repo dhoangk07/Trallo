@@ -106,6 +106,18 @@
 			  		</p>
 				<%end%>
 			</ul>
+
+			<div>
+
+			<label>Move Card</label>
+				<%= form_for card, url:move_card_list_card_path(card.list, card), method: :put, remote: true do |f|%>
+				<p><%= f.select :list_member_id, @board.lists.pluck(:name, :id)%>
+				<%= f.submit :Move%>
+				</p>
+				<%end%>
+
+			</div>
+
 			
 		</div>
 
