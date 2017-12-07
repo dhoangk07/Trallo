@@ -1,2 +1,3 @@
 $('#card-members-<%= @card.id %>').append("<p><%=initial_name(@user)%> </p>");
 $('#select-member-<%=@card.id%> option[value="<%=@user.id%>"]').remove();
+toastr.success('A member <%= @user.name %> has been added to the card <%= @card.name %>');
