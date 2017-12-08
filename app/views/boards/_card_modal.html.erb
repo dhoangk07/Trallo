@@ -103,6 +103,10 @@
 				<%end%>
 			</ul>
 
+			<% card.users.each do |user| %>
+				<%= image_tag(user.photo.url(:thumb)) %>
+			<% end %>
+
 			<div>
 
 			<label>Move Card</label>
