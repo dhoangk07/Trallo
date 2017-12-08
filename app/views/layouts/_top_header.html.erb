@@ -1,0 +1,36 @@
+
+<div class="topnav" id="myTopnav">
+  <% if user_signed_in? %>
+	  <%= link_to root_path, class: active_class('dashboards') do %>  
+	  <%= fa_icon "balance-scale" %>Trallo
+	  <% end %>
+	 
+	  <%= link_to "Boards", boards_path, class: active_class('boards') %>
+
+	  <a href="#about" class="active-page">About</a>
+	  <%= link_to destroy_user_session_path, method: :delete  do %>
+	              <%= fa_icon "sign-out" %>
+	              <% end %>
+
+  <% else %>
+      <%= link_to new_user_session_path do %>
+          <%= fa_icon "sign-in" %>
+      <% end %>
+  <% end %>
+
+</div>
+
+
+
+
+
+
+
+
+        
+            
+
+          
+
+
+  

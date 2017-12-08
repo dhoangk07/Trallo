@@ -9,27 +9,12 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body class='background'>
+  <body>
+
+      <%= render 'layouts/top_header' %>
   	
-     
-      <% if user_signed_in? %>
-
-         <h1><%= fa_icon "balance-scale" %>Trallo</h1>
-            <%= link_to "Boards", boards_path %>
-
-          <li><%= link_to destroy_user_session_path, method: :delete  do %></li>
-              <%= fa_icon "sign-out" %>
-              <% end %>
-
-
-        <% else %>
-          <li><%= link_to new_user_session_path do %></li>
-              <%= fa_icon "sign-in" %>
-            <% end %>
-      <% end %>
-        
-         <p class="notice"><%= notice %></p>
-         <p class="alert"><%= alert %></p>
-        <%= yield %>
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+      <%= yield %>
   </body>
 </html>
