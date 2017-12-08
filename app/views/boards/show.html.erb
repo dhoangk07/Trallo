@@ -1,3 +1,24 @@
+<div>
+
+<p>Insert picture</p>
+
+	<%= form_for @board, :html => { :multipart => true }  do |f| %>
+
+	<%= f.file_field :photo %>
+
+	<%= f.submit "Save"%>
+
+	<%= link_to 'Edit', edit_board_path(@board) %>
+
+	<%= link_to 'Destroy', board_path(@board), method: :delete %>
+
+	<%= image_tag @board.photo.url(:medium) %>
+
+	<%end%>
+
+
+</div>
+
 <h1><%= @board.name %></h1>
 
 <ul id='list'>

@@ -1,11 +1,12 @@
 <h1> Edit board</h1>
 
-<%= form_for @board do |f| %>
+<%= form_for @board, :html => { :multipart => true }  do |f| %>
   <p>
     <%= f.label :name %>
     <%= f.text_field :name %>
   </p>
 
+  <%= f.file_field :photo %>
 
   <%= f.submit %>
 

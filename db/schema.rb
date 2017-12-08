@@ -21,6 +21,10 @@ ActiveRecord::Schema.define(version: 20171208091504) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "comment_count", default: 0
+    t.string "photo_file_name"
+    t.string "photo_content_type"
+    t.integer "photo_file_size"
+    t.datetime "photo_updated_at"
   end
 
   create_table "cardlabels", force: :cascade do |t|
