@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   
   end
 
+  resources :users
+
   resources :lists, only: [] do
 		resources :cards do
       put :invite_member, on: :member    #list/22/card/11/invite_member

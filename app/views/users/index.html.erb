@@ -1,0 +1,12 @@
+<h2>User</h2>
+
+<p><%= link_to 'initial_name(current_user)', user_path(current_user)  %></p>
+
+<% @users.each do |user| %>
+
+    	<h3><%= link_to user.name, user_path(current_user) %></h3>
+    	<p><%= user.last_name %></p>
+    	<p><%= user.first_name %></p>
+    	<p><%= user.email %></p>
+    	
+  <% end %>

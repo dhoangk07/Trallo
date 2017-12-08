@@ -1,0 +1,9 @@
+<h1>Last Name: <%= @user.last_name %></h1>
+
+<h1>First Name: <%= @user.first_name %></h1>
+
+<h1>Email: <%= @user.email %></h1>
+
+<%= link_to 'Edit', edit_user_path(current_user) %>
+<%= link_to 'Destroy', user_path(@user), method: :delete %>
+<%= image_tag @user.photo.url(:medium) %>
