@@ -1,7 +1,7 @@
 class CardDestroyMailerJob < ApplicationJob
   queue_as :default
 
-  def perform(*args)
-    # Do something later
+  def perform(description, user)
+    UserMailer.notification_email(description, user).deliver
   end
 end
