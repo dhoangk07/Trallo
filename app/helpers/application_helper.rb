@@ -6,4 +6,13 @@ module ApplicationHelper
 			 ''
 		end
 	end
+
+	def background_url
+		if (action_name == "show") && (controller_name == "boards")
+			@board.photo.url(:original)
+		else
+			 ''
+		end
+	end
+
 end
