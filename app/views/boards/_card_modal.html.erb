@@ -1,4 +1,4 @@
-<div id="card-<%= card.id %>" class='card-in-list'> 
+<div id="card-<%= card.id %>" class='card-in-list draggable' data-card-id="<%= card.id %>"> 
 	<div id="modal-<%= card.id %>" class="modal">
 
 		<h3>
@@ -144,3 +144,5 @@
 	<%= fa_icon "commenting-o" %> <a id="comment-count-<%=comment.card.id%>"> <%= card.comments.count %></a> 
 
 </div>
+
+

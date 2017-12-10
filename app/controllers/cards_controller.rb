@@ -93,17 +93,29 @@ class CardsController < ApplicationController
   end
 
   def move_card
-  @card = Card.find(params[:id])
-  @list = List.find(params[:card][:list_member_id])
-  @board = @list.board
-  @card.list_id = @list.id
-  @card.save
-  
-  respond_to do |format|
-    format.html { redirect_to list_card_path(@card)}
-    format.js
+    @card = Card.find(params[:id])
+    @list = List.find(params[:card][:list_member_id])
+    @board = @list.board
+    @card.list_id = @list.id
+    @card.save
+    
+    respond_to do |format|
+      format.html { redirect_to list_card_path(@card)}
+      format.js
+    end
   end
-end
+
+  def drop_card
+    @card = Card.find(params[:id])
+    @list = List.find(params[:card][:list_member_id])
+    @board = @list.board
+    @card.list_id = @list.id
+    @card.save
+    
+    respond_to do |format|
+      format.js
+    end
+  end
 
 
   def edit_description

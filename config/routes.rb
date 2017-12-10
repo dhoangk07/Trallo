@@ -15,6 +15,7 @@ Rails.application.routes.draw do
       put :invite_member, on: :member    #list/22/card/11/invite_member
       delete :remove_member, on: :member
       put :move_card, on: :member
+      put :drop_card, on: :member
       get :edit_description, on: :member 
       put :update_description, on: :member  
       put :select_label, on: :member
