@@ -3,7 +3,7 @@
 
 		<h3>
 			<%= card.name %>
-			<%= link_to list_card_path(card.list, card), class: 'card-trash', method: :delete, remote: true do %>
+			<%= link_to list_card_path(card.list, card), class: 'card-trash', 'data-confirm' => 'Are you sure?' , method: :delete, remote: true do %>
 				<%= fa_icon "trash" %>
 			<% end %>
 		</h3>
