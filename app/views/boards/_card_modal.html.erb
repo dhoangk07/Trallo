@@ -89,7 +89,7 @@
 
 			<label>Invite Member </label>
 			<%= form_for card, url: invite_member_list_card_path(card.list, card), method: :put, remote: true do |f|%>
-				<%= f.select :new_member_id, User.where.not(id: card.users).pluck(:email, :id), {}, { id: "select-member-#{card.id}" }%>
+				<%= f.select :new_member_id, User.where.not(id: (card.users + [card.user])).pluck(:email, :id), {}, { id: "select-member-#{card.id}" }%>
 				<%= f.submit :invite %>
 			<%end%>
 
