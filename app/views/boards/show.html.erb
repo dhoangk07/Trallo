@@ -17,6 +17,21 @@
 
 </div>
 
+<div>
+
+<p>Invite member</p>
+
+	<%= form_for @board,url: invite_member_board_path(@board.id), method: :put, remote: true do |f| %>
+
+	<%= f.text_field :new_member_id, class: "invite-member-on-board-show ", placeholder: "lucatoni@trallo.com"%>
+
+	<%= f.submit "Invite"%>
+
+	<%end%>
+
+
+</div>
+
 <h1><%= @board.name %></h1>
 
 <ul id='list'>

@@ -44,6 +44,22 @@ class BoardsController < ApplicationController
     redirect_to boards_path
   end
 
+  def invite_member
+
+    @card = Card.find(params[:id])
+    if ValidatesEmailFormatOf::validate_email_format(params[:board][:new_member_id]) == nil 
+      UserMailer.welcome_email_to_join_board(params[:board][:new_member_id]).deliver
+    else
+      @invalid = true
+    end
+
+    
+    respond_to do |format|
+      format.js
+    end
+  end
+
+
 private
 
   def board_params

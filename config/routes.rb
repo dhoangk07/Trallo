@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :boards do
   	resources :lists 
   	resources :events
+    put :invite_member, on: :member
   
   end
 

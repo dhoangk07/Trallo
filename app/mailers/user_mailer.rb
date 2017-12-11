@@ -36,6 +36,11 @@ class UserMailer < ApplicationMailer
     mail(:to => user.email, :subject => "Welcome New Member.")
     end
   end
+
+  def welcome_email_to_join_board(email)
+    @email = email
+    mail(:to => email, :subject => "Welcome New Member to join Board.")
+  end
 end
 
 
