@@ -35,10 +35,10 @@
 <h1><%= @board.name %></h1>
 
 <ul id='list'>
-	<% @board.lists.order('created_at DESC').each do |list| %>
+	<% @board.lists.order('list_position ASC').each_with_index do |list, index| %>
 		
-	  <%= render('list_modal', board: @board, list: list) %>
-  
+	  <%= index+1%><%= render('list_modal', board: @board, list: list) %>
+
 	<% end %>
 
 

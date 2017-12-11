@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   	resources :lists 
   	resources :events
     put :invite_member, on: :member
+
   
   end
 
@@ -21,6 +22,7 @@ Rails.application.routes.draw do
       put :update_description, on: :member  
       put :select_label, on: :member
     end
+    put :move_list, on: :member
   end
 
   resources :cards, only: [] do

@@ -10,4 +10,5 @@ class List < ApplicationRecord
     	UserMailer.notification_email_destroy_list(user, self).deliver
     end
 
+    attr_accessor :list_member_id
 end

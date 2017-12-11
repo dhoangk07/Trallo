@@ -18,6 +18,17 @@
 	  	</div>
 
 	  	<div>
+
+			<label>Move list</label>
+				<%= form_for list, url:move_list_list_path(list.id), method: :put, remote: true do |f|%>
+				<p><%= f.select :list_position, (1..@board.lists.count).map{|e| [e.to_s, e]}, {}, { id: "select-list-member-#{list.id}" } %>
+				<%= f.submit :Move %>
+				</p>
+				<%end%>
+
+			</div>
+
+	  	<div>
   			<p>Create new card</p>
 			<% new_card = list.cards.new %> 
 			<%= form_for [list, new_card],  remote: true do |f| %>

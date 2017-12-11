@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171209044703) do
+ActiveRecord::Schema.define(version: 20171211071953) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,6 +45,10 @@ ActiveRecord::Schema.define(version: 20171209044703) do
     t.integer "user_id"
     t.datetime "due_date"
     t.integer "comment_count", default: 0
+    t.string "photo_file_name"
+    t.string "photo_content_type"
+    t.integer "photo_file_size"
+    t.datetime "photo_updated_at"
   end
 
   create_table "cards_labels", force: :cascade do |t|
@@ -106,6 +110,7 @@ ActiveRecord::Schema.define(version: 20171209044703) do
     t.datetime "updated_at", null: false
     t.integer "board_id"
     t.integer "user_id"
+    t.integer "list_position"
   end
 
   create_table "lists_users", force: :cascade do |t|

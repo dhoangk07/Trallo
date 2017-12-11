@@ -55,10 +55,34 @@ class ListsController < ApplicationController
     
   end
 
+  def drop_card
+    @card = Card.find(params[:id])
+    @list = List.find(params[:id])
+    @list = List.find(params[:card][:list_member_id])
+    @board = @list.board
+    @list.board_id = @board.id
+    @list.save
+    
+    respond_to do |format|
+      format.js
+    end
+   end
+
+  def move_list
+    @list = List.find(params[:id])
+    @list.list_position = params[:list][:list_position]
+    @list.save
+    
+    respond_to do |format|
+      format.js
+    end
+   end
+
+
 private
 
   def list_params
-    params.require(:list).permit(:name, :board_id, :user_id)
+    params.require(:list).permit(:name, :board_id, :user_id, :list_position)
   end
 end
 
