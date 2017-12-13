@@ -8,10 +8,15 @@
 	  <%= link_to "Boards", boards_path, class: active_class('boards') %>
 
 	  <a href="#about" class="active-page">About</a>
-	  <%= link_to destroy_user_session_path, method: :delete  do %>
-      <%= fa_icon "sign-out" %>
-      <% end %>
-	  <%=link_to initial_name(current_user), user_path(current_user) %>
+	  
+	  <%=link_to initial_name(current_user), '#', id: 'user-profile' %>
+	  <div id="user-profile-content" style="display: none">
+	  	  <%= link_to 'Profile', user_path(current_user), class: 'popover-item' %>
+		  <%= link_to destroy_user_session_path, method: :delete, class: 'popover-item'  do %>
+		      <%= fa_icon "sign-out" %>
+	      <% end %>
+	  </div>
+	  
 
   <% end %>
 
