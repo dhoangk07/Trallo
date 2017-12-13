@@ -151,3 +151,26 @@ element.style {
 
 
 }
+
+.board-list {
+    height: 100px;
+    width: 250px;
+    border-radius: 7px;
+    font-size: 20px; 
+    background-color: #959da1;
+    position: relative;
+    text-decoration: none;
+    float: left;
+    padding: 10px;
+    margin: 5px;
+    cursor: pointer;
+    a {
+      text-decoration: none;
+    }
+
+}
+
+.board-list:hover{
+    opacity: 0.5;
+    filter: alpha(opacity=1);
+}

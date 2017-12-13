@@ -3,6 +3,10 @@ $(document).ready(function() {
 		$(event.target).find('a').click();
 	});
 
+	$('#dashboard').bind('click', '.board-list', function(event) {
+		$(event.target).find('a').trigger('click');
+	});
+
 	$('#label-select').on('click', function(event) {
 		$('#ex1').modal({closeExisting: false});
 		event.preventDefault();

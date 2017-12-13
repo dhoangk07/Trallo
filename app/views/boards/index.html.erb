@@ -1,8 +1,10 @@
-<%= link_to 'New board', new_board_path  %></p>
+<div id = "dashboard">
+	<% @boards.each do |board| %>
 
-<h2>Lists of the board </h2>
-<% @boards.each do |board| %>
+  		<h3 class="board-list" ><%= link_to board.name, board_path(board) %></h3>
+  	<% end %>
 
-  <h3><%= link_to board.name, board_path(board) %></h3>
+  <h3 class="board-list"><%= link_to 'Create new board...', new_board_path  %></h3>
+
+</div>
     	
-<% end %>
