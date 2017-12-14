@@ -16,8 +16,73 @@
 		      <%= fa_icon "sign-out" %>
 	      <% end %>
 	  </div>
-	  
+		
+		<a href="#" id="icon-image" ><%= fa_icon "image" %></a>
+	   <div id="icon-image-content" style="display: none">
+	   		<%if @board.present? %>
+	  		<%= form_for @board, :html => { :multipart => true }  do |f| %>
 
+				<%= f.file_field :photo %>
+
+				<%= f.submit "Save"%>
+
+				<%= link_to 'Edit', edit_board_path(@board) %>
+
+				<%= link_to 'Destroy', board_path(@board), method: :delete %>
+
+			<%end%>
+			<%end%>
+	  	</div> 
+
+
+	  	<a href="#" id="event-icon" ><%= fa_icon "calendar-times-o" %></a>
+	  	
+	
+	
+	<div id="event-detail-content" style="display: none">
+		<%if @board.present? %>
+			<% @board.events.each do |event| %>
+				
+				<li id="new-event-<%= event.id %>"><%= link_to event.title, board_event_path(@board, event)  %></li>
+		  		<%= link_to 'Destroy', board_event_path(@board, event), method: :delete, remote: true %>
+
+				<% end %>
+
+				<p>Create new event</p>
+			<% new_event = @board.events.new %>
+			<%= form_for [@board, new_event], remote: true do |f| %>
+		  	<%= f.hidden_field :board_id, value: @board.id %>
+		  	<%= f.text_field :title %>
+		  	<%= f.submit %>
+			<% end %>
+
+		<% end %>
+				
+		
+		  		
+
+		
+	</div> 
+
+	
+	<a href="#" id="member-icon"><%= fa_icon "user-o" %></a>
+
+	<div id="member-invite-icon-content" style="display: none">
+
+		<%if @board.present? %>
+
+			<%= form_for @board,url: invite_member_board_path(@board.id), method: :put, remote: true do |f| %>
+
+			<%= f.text_field :new_member_id, class: "invite-member-on-board-show ", placeholder: "lucatoni@trallo.com"%>
+
+			<%= f.submit "Invite"%>
+
+			<%end%>
+		
+		<%end%>
+
+	</div>
+	   
   <% end %>
 
 </div>        

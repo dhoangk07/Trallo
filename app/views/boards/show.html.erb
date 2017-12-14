@@ -1,43 +1,11 @@
-<div>
 
-<p>Insert picture</p>
-
-	<%= form_for @board, :html => { :multipart => true }  do |f| %>
-
-	<%= f.file_field :photo %>
-
-	<%= f.submit "Save"%>
-
-	<%= link_to 'Edit', edit_board_path(@board) %>
-
-	<%= link_to 'Destroy', board_path(@board), method: :delete %>
-
-	<%end%>
-
-
-</div>
-
-<div>
-
-<p>Invite member</p>
-
-	<%= form_for @board,url: invite_member_board_path(@board.id), method: :put, remote: true do |f| %>
-
-	<%= f.text_field :new_member_id, class: "invite-member-on-board-show ", placeholder: "lucatoni@trallo.com"%>
-
-	<%= f.submit "Invite"%>
-
-	<%end%>
-
-
-</div>
 
 <h1><%= @board.name %></h1>
 
 <ul id='list'>
-	<% @board.lists.order('list_position ASC').each_with_index do |list, index| %>
+	<% @board.lists.order('list_position ASC').each do |list| %>
 		
-	  <%= index+1%><%= render('list_modal', board: @board, list: list) %>
+	  <%= render('list_modal', board: @board, list: list) %>
 
 	<% end %>
 
@@ -53,20 +21,5 @@
 </div>
 </ul>
 
-<ul id='event'>
-	<% @board.events.each do |event| %>
-	  		<li id="new-event-<%= event.id %>"><%= link_to event.title, board_event_path(@board, event)  %>
-	  		<%= link_to 'Destroy', board_event_path(@board, event), method: :delete, remote: true %>
-	  		<% end %>
-	  		</li>
-	<p>Create new event</p>
-	<% new_event = @board.events.new %>
-	<%= form_for [@board, new_event], remote: true do |f| %>
-	  <%= f.hidden_field :board_id, value: @board.id %>
-	  <%= f.text_field :title %>
-	  <%= f.submit %>
-	<% end %>
-
-</ul>
 
 
