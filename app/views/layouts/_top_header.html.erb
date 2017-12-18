@@ -16,8 +16,8 @@
 		      <%= fa_icon "sign-out" %>
 	      <% end %>
 	  </div>
-		
-		<a href="#" id="icon-image" ><%= fa_icon "image" %></a>
+
+		<a href="#" id="icon-image" ><abbr title="Insert Image..."><%= fa_icon "image" %></abbr></a>
 	   <div id="icon-image-content" style="display: none">
 	   		<%if @board.present? %>
 	  		<%= form_for @board, :html => { :multipart => true }  do |f| %>
@@ -35,7 +35,7 @@
 	  	</div> 
 
 
-	  	<a href="#" id="event-icon" ><%= fa_icon "calendar-times-o" %></a>
+	  	<a href="#" id="event-icon" ><abbr title="Events..."><%= fa_icon "calendar-times-o" %></abbr></a>
 	  	
 	
 	
@@ -65,7 +65,7 @@
 	</div> 
 
 	
-	<a href="#" id="member-icon"><%= fa_icon "user-o" %></a>
+	<a href="#" id="member-icon"><abbr title="Invite Member..."><%= fa_icon "user-o" %></abbr></a>
 
 	<div id="member-invite-icon-content" style="display: none">
 
