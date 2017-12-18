@@ -6,6 +6,19 @@
 			<% end %>
 		</div>
 
+		<a href="#" id="toggle-down-<%=list.id%>" class='toggle-down'><%= fa_icon "toggle-down" %></a>
+
+		<div class='toggle-down-icon' id="toggle-down-icon-<%=list.id%>" style="display: none">
+			<label>Move list</label>
+				<%= form_for list, url:move_list_list_path(list.id), method: :put, remote: true do |f|%>
+				<p><%= f.select :list_position, (1..@board.lists.count).map{|e| [e.to_s, e]}, {}, { id: "select-list-member-#{list.id}" } %>
+				<%= f.submit :Move %>
+				</p>
+				<%end%>
+
+		</div>
+
+
 		<div id="" style="overflow-y: scroll; height:200px;"> 
 
 		  	<ul class="cards"> 
@@ -18,17 +31,6 @@
 	  	</div>
 
 	  	<div>
-
-			<label>Move list</label>
-				<%= form_for list, url:move_list_list_path(list.id), method: :put, remote: true do |f|%>
-				<p><%= f.select :list_position, (1..@board.lists.count).map{|e| [e.to_s, e]}, {}, { id: "select-list-member-#{list.id}" } %>
-				<%= f.submit :Move %>
-				</p>
-				<%end%>
-
-			</div>
-
-	  	<div>
   			<p>Create new card</p>
 			<% new_card = list.cards.new %> 
 			<%= form_for [list, new_card],  remote: true do |f| %>
@@ -38,8 +40,8 @@
 			<%= f.text_field :description, placeholder: :description %>
 			<%= f.submit "Add a card ..."%>
 			<% end %>
-			
 	    </div>
+	   
 </li> 
 
 
