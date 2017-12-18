@@ -6,6 +6,10 @@ class BoardsController < ApplicationController
   # action
   def show
     @board = Board.find(params[:id])
+    unless current_user == @board.user
+       flash[:notice] = 'You are not authorized'
+       redirect_to root_path
+    end
    
   end
  
