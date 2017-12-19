@@ -1,4 +1,17 @@
+<div class="wrapper">
+	<%if @board.present? %>
+   		<%= form_tag search_board_path(@board), remote: true do%>
+			<div class="block-left">
+				<%= text_field_tag :search, params[:search] %>
+				<span class="block-right"><%= fa_icon "search" %></span>
+			</div>
+		<% end %>
+	<% end %>
+		<a href="#" id="cards-result" class="cards-result"></a>
+		<div id="cards-result-content" class="cards-result-content" style="display: none">
+</div>
 
+</div>
 
 <h1><%= @board.name %></h1>
 
@@ -9,17 +22,16 @@
 
 	<% end %>
 
-
 <div>
 
-<% new_list = @board.lists.new %>
-<%= form_for [@board, new_list], remote: true do |f| %>
-  <%= f.hidden_field :board_id, value: @board.id %>
-  <%= f.hidden_field :user_id, value: current_user.id %>
-  <%= f.text_field :name, placeholder: "Add a list..." %>
-<% end %>
+	<% new_list = @board.lists.new %>
+	<%= form_for [@board, new_list], remote: true do |f| %>
+	  <%= f.hidden_field :board_id, value: @board.id %>
+	  <%= f.hidden_field :user_id, value: current_user.id %>
+	  <%= f.text_field :name, placeholder: "Add a list..." %>
+	<% end %>
 </div>
+
+
+
 </ul>
-
-
-

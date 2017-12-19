@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   	resources :lists 
   	resources :events
     put :invite_member, on: :member
-
+    post :search, on: :member
   
   end
 

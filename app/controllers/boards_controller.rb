@@ -1,6 +1,18 @@
 class BoardsController < ApplicationController
   def index
       @boards = Board.where(user_id: current_user.id)
+    
+  end
+
+  def search
+    @board = Board.find params[:id]
+    if (params[:search] && @board).present?
+      @cards = @board.search(params[:search])
+    end
+
+    respond_to do |format|
+      format.js
+    end
   end
 
   # action
@@ -10,7 +22,7 @@ class BoardsController < ApplicationController
        flash[:notice] = 'You are not authorized'
        redirect_to root_path
     end
-   
+
   end
  
   # action
@@ -73,6 +85,6 @@ class BoardsController < ApplicationController
 private
 
   def board_params
-    params.require(:board).permit(:name, :user_id, :photo)
+    params.require(:board).permit(:name, :user_id, :photo, :search)
   end
 end
