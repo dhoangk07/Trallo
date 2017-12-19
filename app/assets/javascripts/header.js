@@ -5,4 +5,6 @@ $(document).ready(function() {
 	$('#member-icon').webuiPopover({url:'#member-invite-icon-content'});
 
 	$('#cards-result').webuiPopover({url:'#cards-result-content'});
+
+	$('#board-icon').webuiPopover({url:'#board-icon-content'});
 })

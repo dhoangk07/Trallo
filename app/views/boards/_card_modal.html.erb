@@ -78,19 +78,20 @@
 		<div class='right'>
 			<div >
 		        <label>Set due date</label>
-		        <%= form_for [card.list, card], remote: true do |f| %>
+		        <p><%= form_for [card.list, card], remote: true do |f| %>
 			        <%= f.text_field :due_date, placeholder: 'Set due date. e.g: 2017-12-10 12:00pm'  %>
-			        <%= f.submit :set %>
+			        <%= f.submit :set, class:"btn-default" %>
 			        <p id='due-date-zone-<%= card.id %>'><%= card.due_date.strftime('%e %b %Y') if card.due_date.present? %></p>
 		  		
 				<% end %>
+				</p>
 			</div>
 				
-
+			<div>
 			<label>Invite Member </label>
-			<%= form_for card, url: invite_member_list_card_path(card.list, card), method: :put, remote: true do |f|%>
+			<p><%= form_for card, url: invite_member_list_card_path(card.list, card), method: :put, remote: true do |f|%>
 				<%= f.select :new_member_id, User.where.not(id: (card.users + [card.user])).pluck(:email, :id), {}, { id: "select-member-#{card.id}" }%>
-				<%= f.submit :invite %>
+				<%= f.submit :invite, class:"btn-default" %></p>
 			<%end%>
 
 			<ul id = "card-members-<%= card.id %>">
@@ -102,7 +103,7 @@
 			  		</p>
 				<%end%>
 			</ul>
-
+			</div>
 			<% card.users.each do |user| %>
 				<%= image_tag(user.photo.url(:thumb)) %>
 			<% end %>
