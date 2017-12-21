@@ -1,6 +1,6 @@
 <div class="wrapper">
 	<div class="board-icon">
-		<a href="#" id="board-icon"><%= fa_icon "ship" %> Boards </a>
+		<a href="#" id="board-icon"><%= fa_icon "trello" %> Boards </a>
 		<div id="board-icon-content" style="display: none">
 				<% @boards.each do |board| %>
 		  		<h3><%= link_to board.name, board_path(board) %></h3>
@@ -20,6 +20,23 @@
 			<a href="#" id="cards-result" class="cards-result"></a>
 			<div id="cards-result-content" class="cards-result-content" style="display: none">
 	</div>
+
+	<div class="statistics-icon">
+
+	<a href="#" id="statistics-icon"><%= fa_icon "bar-chart" %></a>
+		<div id="statistics-icon-content" style="display: none">
+			<h3><Strong>Statistics quantity Card of Board</Strong></h3>
+				<h4>Quantity Boards : <%= @boards.all.count%>
+				<h4>Number of lists: <%= @board.lists.count %></h4>
+				<% cards = Card.where(list_id: @board.lists.select(:id))%>
+				<h4>Number of cards: <%= cards.count %></h4>
+				<% cards_users = CardsUser.where(card_id: cards)%>
+				<h4>Number of members: <%= User.where(id: cards_users.select(:user_id)).count %></h4>
+				<h4>Number of comments : <%= Comment.where(card_id: cards).count %></h4>
+				<h4>Average number of comments for a card : <%= Comment.where(card_id: cards, user_id: current_user.id).count.to_f %>/<%= cards.count.to_f %></h4>
+				<h4>Quantity comments of current user : <%= Comment.where(card_id: cards, user_id: current_user.id).count%>
+	</div>
+
 </div>
 
 

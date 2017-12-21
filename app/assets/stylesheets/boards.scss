@@ -236,7 +236,8 @@ element.style {
     text-align: center;
     text-decoration: none;
     line-height: 15px;
-    padding-left: 7px;
+    padding-left: 5px;    
+    margin-left: 7px;
 
     
 }
@@ -270,3 +271,22 @@ element.style {
 .fa-search{
   color: white;
 }
+
+.statistics-icon {
+    padding-top: 10px;
+    float: left;
+    background-color: rgb(82, 86, 91);
+    color: white;
+    border-radius: 3px;
+    width: 30px;
+    height: 15px;
+    text-align: center;
+    text-decoration: none;
+    padding-left: 7px;
+    margin-top: -10px;
+    margin-left: -9px;
+        
+  }
+  .fa-bar-chart{
+      color: white;
+      }

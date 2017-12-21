@@ -6,5 +6,8 @@ $(document).ready(function() {
 
 	$('#cards-result').webuiPopover({url:'#cards-result-content'});
 
-	$('#board-icon').webuiPopover({url:'#board-icon-content'});
+	$('#board-icon').webuiPopover({url:'#board-icon-content', placement: "bottom"});
+	
+	$('#statistics-icon').webuiPopover({url:'#statistics-icon-content', placement: "bottom"});
+
 })

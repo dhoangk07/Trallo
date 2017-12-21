@@ -30,10 +30,6 @@ class User < ApplicationRecord
 
    attr_accessor :without_name
 
-
-
-
-
    after_create :send_welcome_email
 
    def send_welcome_email
@@ -42,7 +38,6 @@ class User < ApplicationRecord
 
     has_attached_file :photo, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "/images/:style/missing.png"
     validates_attachment_content_type :photo, content_type: /\Aimage\/.*\z/
-
 
     def self.random_text
       (0...8).map { (65 + rand(26)).chr }.join
