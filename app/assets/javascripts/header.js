@@ -4,7 +4,7 @@ $(document).ready(function() {
 	$('#event-icon').webuiPopover({url:'#event-detail-content'});
 	$('#member-icon').webuiPopover({url:'#member-invite-icon-content'});
 
-	$('#cards-result').webuiPopover({url:'#cards-result-content'});
+	$('#cards-result').webuiPopover({url:'#cards-result-content', placement: "auto"});
 
 	$('#board-icon').webuiPopover({url:'#board-icon-content', placement: "bottom"});
 	
