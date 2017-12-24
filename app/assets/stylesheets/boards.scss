@@ -185,7 +185,17 @@ element.style {
     cursor: pointer;
     font-size: 16px;
     z-index: 2;
-    float: left;
+    
+}
+
+#cards-result{
+    float: right;
+    font-size: 13px;
+    height: 2px;
+    width: 1px;
+    display: block;
+    margin-top: -10px;
+    margin-right:-50px;
 }
 
 .block-left {

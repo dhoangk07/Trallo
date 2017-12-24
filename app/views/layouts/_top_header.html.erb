@@ -36,47 +36,45 @@
 
 
 	  	<a href="#" id="event-icon" ><abbr title="Events..."><%= fa_icon "calendar-times-o" %></abbr></a>
-	  	
 	
-	
-	<div id="event-detail-content" style="display: none">
-		<%if @board.present? %>
-			<% @board.events.each do |event| %>
-				
-				<li id="new-event-<%= event.id %>"><%= link_to event.title, board_event_path(@board, event)  %></li>
-		  		<%= link_to 'Destroy', board_event_path(@board, event), method: :delete, remote: true %>
+			<div id="event-detail-content" style="display: none">
+				<%if @board.present? %>
+					<% @board.events.each do |event| %>
+						
+						<li id="new-event-<%= event.id %>"><%= link_to event.title, board_event_path(@board, event)  %></li>
+				  		<%= link_to 'Destroy', board_event_path(@board, event), method: :delete, remote: true %>
 
 				<% end %>
 
-				<p>Create new event</p>
-			<% new_event = @board.events.new %>
-			<%= form_for [@board, new_event], remote: true do |f| %>
-		  	<%= f.hidden_field :board_id, value: @board.id %>
-		  	<%= f.text_field :title %>
-		  	<%= f.submit %>
-			<% end %>
+					<p>Create new event</p>
+						<% new_event = @board.events.new %>
+							<%= form_for [@board, new_event], remote: true do |f| %>
+					  	<%= f.hidden_field :board_id, value: @board.id %>
+					  	<%= f.text_field :title %>
+					  	<%= f.submit %>
+							<% end %>
 
-		<% end %>
-		
-	</div> 
+				<% end %>
+				
+			</div> 
 
 	<a href="#" id="member-icon"><abbr title="Invite Member..."><%= fa_icon "user-o" %></abbr></a>
 
-	<div id="member-invite-icon-content" style="display: none">
+		<div id="member-invite-icon-content" style="display: none">
 
-		<%if @board.present? %>
+			<%if @board.present? %>
 
-			<%= form_for @board,url: invite_member_board_path(@board.id), method: :put, remote: true do |f| %>
+				<%= form_for @board,url: invite_member_board_path(@board.id), method: :put, remote: true do |f| %>
 
-			<%= f.text_field :new_member_id, class: "invite-member-on-board-show ", placeholder: "lucatoni@trallo.com"%>
+					<%= f.text_field :new_member_id, class: "invite-member-on-board-show ", placeholder: "lucatoni@trallo.com"%>
 
-			<%= f.submit "Invite"%>
+					<%= f.submit "Invite"%>
 
+				<%end%>
+			
 			<%end%>
-		
-		<%end%>
 
-	</div>
+		</div>
 	
 	<div class="board-icon">
 	
@@ -97,9 +95,10 @@
 				</div>
 			<% end %>
 		<% end %>
+	</div>
 			<a href="#" id="cards-result" class="cards-result"></a>
 			<div id="cards-result-content" class="cards-result-content" style="display: none"></div>
-	</div>
+	
 
   <% end %>
 
