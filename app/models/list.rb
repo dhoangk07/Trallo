@@ -3,6 +3,7 @@ class List < ApplicationRecord
 	has_many :cards, dependent: :destroy
 
 	belongs_to :user
+	has_many :activities, as: :objectable
 
 	after_destroy :send_notification_email_destroy_list
   

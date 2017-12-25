@@ -72,6 +72,11 @@
 		    	<% end %>
 		    	
 		    </ul>
+		<p>Activity</p>
+		<% card.activities.each do |activity| %> 
+  			<p> <%= current_user.name%> <%= activity.action %> this card </p>
+
+		<% end%>
 			
 		</div>
 

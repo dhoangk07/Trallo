@@ -67,6 +67,7 @@ class BoardsController < ApplicationController
     email = params[:board][:new_member_id] 
     if ValidatesEmailFormatOf::validate_email_format(email) == nil 
       UserMailer.welcome_email_to_join_board(email).deliver
+
       user = User.new(email: email)
       user.password = User.random_text
       user.password_confirmation = user.password
@@ -80,6 +81,7 @@ class BoardsController < ApplicationController
     
     respond_to do |format|
       format.js
+      Activity.create(user_id: current_user.id, action: 'added22', objectable: @board)
     end
   end
 

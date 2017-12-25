@@ -23,6 +23,7 @@ class ListsController < ApplicationController
       respond_to do |format|
         format.html { redirect_to board_path(@list.board) }
         format.js
+        Activity.create(user_id: current_user.id, action: 'added11111', objectable: @list)
       end
       
     else
@@ -47,7 +48,7 @@ class ListsController < ApplicationController
   def destroy
     @list = List.find(params[:id])
     @list.destroy
-
+    Activity.create(user_id: current_user.id, action: 'destroyed', objectable: @list.board, description: @list.name)
     respond_to do |format|
       format.html { redirect_to board_path(@list.board_id) }
       format.js

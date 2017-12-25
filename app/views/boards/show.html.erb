@@ -15,6 +15,24 @@
 	  <%= f.hidden_field :user_id, value: current_user.id %>
 	  <%= f.text_field :name, placeholder: "Add a list..." %>
 	<% end %>
+
+	<a href="#" id="menu-icon" ><%= fa_icon "sliders" %>Menu</a>
+
+<div id="menu-icon-content" style="display: none">
+
+	<p>Activity</p>
+
+	    <ul>
+		<% @board.activities.order('created_at DESC').each do |activity| %>
+			<% if activity.action == "moved" %>
+			<li><%= activity.user.name %> <%= activity.action %> this card  <%= activity.description %> <%= time_ago_in_words(activity.created_at) %> ago </li>
+			<% else%>
+			<li><%= activity.user.name %> <%= activity.action %> <%= activity.description %><%= time_ago_in_words(activity.created_at)  %> ago </li>
+		<% end%>
+		<% end%>
+		</ul>
+
 </div>
 
+</div>
 </ul>

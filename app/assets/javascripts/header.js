@@ -9,5 +9,7 @@ $(document).ready(function() {
 	$('#board-icon').webuiPopover({url:'#board-icon-content', placement: "bottom"});
 	
 	$('#statistics-icon').webuiPopover({url:'#statistics-icon-content', placement: "bottom"});
+	
+	$('#menu-icon').webuiPopover({url:'#menu-icon-content', placement: "bottom"});
 
 })

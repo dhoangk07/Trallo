@@ -13,6 +13,7 @@ class Card < ApplicationRecord
 	has_many :cards_users
 	has_many(:users, {through: :cards_users, dependent: :destroy})
 	belongs_to :user # owner
+	has_many :activities, as: :objectable
 
 	attr_accessor :new_member_id
 

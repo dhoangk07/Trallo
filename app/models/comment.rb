@@ -2,6 +2,8 @@ class Comment < ApplicationRecord
 	belongs_to :card
 	belongs_to :user
 
+    has_many :activities, as: :objectable
+
    	def comment_created
       
       #send card's owner
