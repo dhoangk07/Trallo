@@ -62,7 +62,9 @@ class CardsController < ApplicationController
 
   def destroy
     @card = Card.find(params[:id])
-    CardDestroyMailerJob.perform_later(@card.description, @card.user)
+    if @card.user.notification
+      CardDestroyMailerJob.perform_later(@card.description, @card.user)
+    end
     @card.destroy
 
     respond_to do |format|

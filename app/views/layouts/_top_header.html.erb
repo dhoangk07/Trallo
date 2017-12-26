@@ -80,8 +80,10 @@
 	
 		<a href="#" id="board-icon"><%= fa_icon "trello" %> Boards </a>
 		<div id="board-icon-content" style="display: none">
+				<%if @board.present?%>
 				<% @boards.each do |board| %>
 		  		<h3><%= link_to board.name, board_path(board) %></h3>
+		  		<% end %>
 		  		<% end %>
 		</div>
 	</div>

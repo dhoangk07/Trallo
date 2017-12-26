@@ -26,7 +26,9 @@ class Comment < ApplicationRecord
         d = (a+b+c).uniq
 
         d.each do |user|
-          UserMailer.comment_created(user, self).deliver
+          if user.notification
+            UserMailer.comment_created(user, self).deliver
+          end
         end
    end
 end
