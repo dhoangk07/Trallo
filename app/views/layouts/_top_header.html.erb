@@ -61,17 +61,14 @@
 	<a href="#" id="member-icon"><abbr title="Invite Member..."><%= fa_icon "user-o" %></abbr></a>
 
 		<div id="member-invite-icon-content" style="display: none">
-
-			<%if @board.present? %>
-
-				<%= form_for @board,url: invite_member_board_path(@board.id), method: :put, remote: true do |f| %>
-
-					<%= f.text_field :new_member_id, class: "invite-member-on-board-show ", placeholder: "lucatoni@trallo.com"%>
-
-					<%= f.submit "Invite"%>
-
+			<%if @board.invite_member_count <=5%>
+				<%if @board.present? %>
+					<%= form_for @board, url: invite_member_board_path(@board.id), method: :put, remote: true do |f| %>
+						<%= f.text_field :new_member_id, class: "invite-member-on-board-show ", placeholder: "lucatoni@trallo.com"%>
+						<%= f.submit "Invite"%>
+					<%end%>
+				
 				<%end%>
-			
 			<%end%>
 
 		</div>

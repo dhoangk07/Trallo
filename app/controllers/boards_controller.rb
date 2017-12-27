@@ -62,19 +62,17 @@ class BoardsController < ApplicationController
   end
 
   def invite_member
-
-    @card = Card.find(params[:id])
+    @board = Board.find(params[:id])
     email = params[:board][:new_member_id] 
-    if ValidatesEmailFormatOf::validate_email_format(email) == nil 
+    if ValidatesEmailFormatOf::validate_email_format(email) == nil
+      @board.invite_member_count +=1
+      @board.save
       UserMailer.welcome_email_to_join_board(email).deliver
-
       user = User.new(email: email)
       user.password = User.random_text
       user.password_confirmation = user.password
       user.without_name = true
       user.save
-
-      
     else
       @invalid = true
     end
