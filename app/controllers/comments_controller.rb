@@ -4,13 +4,13 @@ class CommentsController < ApplicationController
     @comment = Comment.new(comment_params)
     @card = Card.find(params[:card_id])
     Activity.create(user_id: current_user.id, action: 'created comment', objectable: @card)
-  	if @comment.save
-       CommentCreatedMailerJob.perform_later(@comment)
-      respond_to do |format|
-        format.html { redirect_to board_list_path(@comment.list.board, @comment.list) }
-        format.js
+      if @comment.save 
+         CommentCreatedMailerJob.perform_later(@comment)
       end
-  	end
+        respond_to do |format|
+          format.html { redirect_to board_list_path(@comment.list.board, @comment.list) }
+          format.js
+        end
   end
 
   def destroy

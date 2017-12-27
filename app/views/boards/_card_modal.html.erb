@@ -26,43 +26,47 @@
 
 			<p><a id='label-select' href="#">Open Modal</a></p>
 
+			
+			<% comment = card.comments.new %>
 			<p><%= fa_icon "comment-o" %>  Add Comment</p>
+			<% unless card.off_comment %>
+			    <div class="comment-box">
+			    	
+			    	<%= form_for [card, comment], remote: true do |f|%>
+				    	  <%= f.hidden_field :user_id, value: current_user.id %>
+				    	  <%= f.hidden_field :card_id, value: card.id %>
+				    	  <p><%= f.text_field :content, class: 'write-a-comment', placeholder: "Write a comment..." %></p>
+			    	  
+			    	 <% end %>
+			    	
 
-		    <div class="comment-box">
-		    	<% comment = card.comments.new %>
-		    	<%= form_for [card, comment], remote: true do |f|%>
-		    	  <%= f.hidden_field :user_id, value: current_user.id %>
-		    	  <%= f.hidden_field :card_id, value: card.id %>
-		    	  <p><%= f.text_field :content, class: 'write-a-comment', placeholder: "Write a comment..." %></p>
-		    	  
-		    	 <% end %>
+			    	<div class="comment-box-options">
+			    		<a class="comment-box-options-item js-comment-add-attachment">
+			    			<span class="icon-sm icon-attachment">
+			    				<abbr title="Add an attachment..."><%= fa_icon "paperclip" %></abbr>
+			    			</span>
+			    		</a>
 
-		    	<div class="comment-box-options">
-		    		<a class="comment-box-options-item js-comment-add-attachment">
-		    			<span class="icon-sm icon-attachment">
-		    				<abbr title="Add an attachment..."><%= fa_icon "paperclip" %></abbr>
-		    			</span>
-		    		</a>
+			    		<a class="comment-box-options-item js-comment-mention-member"">
+			    			<span class="icon-sm icon-mention">
+			    				<abbr title="Mention a member..."><%= fa_icon "at" %></abbr>
+			    			</span>
+			    		</a>
 
-		    		<a class="comment-box-options-item js-comment-mention-member"">
-		    			<span class="icon-sm icon-mention">
-		    				<abbr title="Mention a member..."><%= fa_icon "at" %></abbr>
-		    			</span>
-		    		</a>
+			    		<a class="comment-box-options-item js-comment-add-emoji">
+			    			<span class="icon-sm icon-emoji">
+			    				<abbr title="Add emoji..."><%= fa_icon "meh-o" %></abbr>
+			    			</span>
+			    		</a>
 
-		    		<a class="comment-box-options-item js-comment-add-emoji">
-		    			<span class="icon-sm icon-emoji">
-		    				<abbr title="Add emoji..."><%= fa_icon "meh-o" %></abbr>
-		    			</span>
-		    		</a>
-
-		    		<a class="comment-box-options-item js-comment-add-attachment">
-		    			<span class="icon-sm icon-attachment">
-		    				<abbr title="Add card..."><%= fa_icon "id-card" %></abbr>
-		    			</span>
-		    		</a>
-		    	</div>
-		    </div>
+			    		<a class="comment-box-options-item js-comment-add-attachment">
+			    			<span class="icon-sm icon-attachment">
+			    				<abbr title="Add card..."><%= fa_icon "id-card" %></abbr>
+			    			</span>
+			    		</a>
+			    	</div>
+			    </div>
+		    <% end %>
 
 		    <ul class='comments'>
 		    	<% card.comments.each do |comment| %>
@@ -135,6 +139,12 @@
 
 			</div>
 
+			<div>
+				  <p><%= form_for [card.list, card], remote: true do |f| %>
+				  <p> <%= f.check_box :off_comment %> <%= f.submit "Turn Off Commenting" %> </p>
+				  <%end%>
+  			</div>
+
 			<ul id = "select-labels-<%= card.id %>">
 				<% card.labels.each do |label| %>
 			  		<p><%= label.name %></p>
@@ -146,9 +156,10 @@
 
 	</div>
 
-	<a href="#modal-<%= card.id %>" rel="modal:open" class='card-name'><%= card.name %></a>
-	<%= fa_icon "commenting-o" %> <a id="comment-count-<%=comment.card.id%>"> <%= card.comments.count %></a> 
-
+	<%if comment.present?%>
+		<a href="#modal-<%= card.id %>" rel="modal:open" class='card-name'><%= card.name %></a>
+		<%= fa_icon "commenting-o" %> <a id="comment-count-<%=comment.card.id%>"> <%= card.comments.count %></a> 
+	 <% end %>
 </div>
 
 

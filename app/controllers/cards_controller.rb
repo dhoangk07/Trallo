@@ -161,6 +161,6 @@ class CardsController < ApplicationController
 private
 
   def card_params
-    params.require(:card).permit(:name, :list_id, :file , :description, :user_id, :due_date)
+    params.require(:card).permit(:name, :list_id, :file , :description, :user_id, :due_date, :off_comment)
   end
 end
