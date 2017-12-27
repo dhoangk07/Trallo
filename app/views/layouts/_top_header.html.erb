@@ -17,18 +17,15 @@
 	      <% end %>
 	  </div>
 
+	  <%if @board.present? && @board.persisted?%>
+
 		<a href="#" id="icon-image" ><abbr title="Insert Image..."><%= fa_icon "image" %></abbr></a>
 	   <div id="icon-image-content" style="display: none">
-	   		<%if @board.present? %>
 	  		<%= form_for @board, :html => { :multipart => true }  do |f| %>
 
 				<%= f.file_field :photo %>
 
 				<%= f.submit "Save"%>
-
-				<%= link_to 'Edit', edit_board_path(@board) %>
-
-				<%= link_to 'Destroy', board_path(@board), method: :delete %>
 
 			<%end%>
 			<%end%>
@@ -38,13 +35,11 @@
 	  	<a href="#" id="event-icon" ><abbr title="Events..."><%= fa_icon "calendar-times-o" %></abbr></a>
 	
 			<div id="event-detail-content" style="display: none">
-				<%if @board.present? %>
 					<% @board.events.each do |event| %>
 						
 						<li id="new-event-<%= event.id %>"><%= link_to event.title, board_event_path(@board, event)  %></li>
+				  		
 				  		<%= link_to 'Destroy', board_event_path(@board, event), method: :delete, remote: true %>
-
-				<% end %>
 
 					<p>Create new event</p>
 						<% new_event = @board.events.new %>
@@ -62,13 +57,11 @@
 
 		<div id="member-invite-icon-content" style="display: none">
 			<%if @board.invite_member_count <=5%>
-				<%if @board.present? %>
 					<%= form_for @board, url: invite_member_board_path(@board.id), method: :put, remote: true do |f| %>
 						<%= f.text_field :new_member_id, class: "invite-member-on-board-show ", placeholder: "lucatoni@trallo.com"%>
 						<%= f.submit "Invite"%>
 					<%end%>
 				
-				<%end%>
 			<%end%>
 
 		</div>
@@ -77,28 +70,25 @@
 	
 		<a href="#" id="board-icon"><%= fa_icon "trello" %> Boards </a>
 		<div id="board-icon-content" style="display: none">
-				<%if @board.present?%>
 				<% @boards.each do |board| %>
 		  		<h3><%= link_to board.name, board_path(board) %></h3>
-		  		<% end %>
 		  		<% end %>
 		</div>
 	</div>
 
 	<div class="search-item">
-		<%if @board.present? %>
-	   		<%= form_tag search_board_path(@board), remote: true do%>
-				<div class="block-left">
-					<%= text_field_tag :search, params[:search] %>
-					<span class="block-right"><%= fa_icon "search" %></span>
-				</div>
-			<% end %>
+   		<%= form_tag search_board_path(@board), remote: true do%>
+			<div class="block-left">
+				<%= text_field_tag :search, params[:search] %>
+				<span class="block-right"><%= fa_icon "search" %></span>
+			</div>
 		<% end %>
 	</div>
 			<a href="#" id="cards-result" class="cards-result"></a>
 			<div id="cards-result-content" class="cards-result-content" style="display: none"></div>
 	
 
+  <% end %>
   <% end %>
 
 </div>        
